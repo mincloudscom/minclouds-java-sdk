@@ -2,7 +2,7 @@ package com.minclouds.client;
 
 import com.minclouds.ApiClient;
 import com.minclouds.Configuration;
-import org.apache.commons.lang3.StringUtils;
+import com.minclouds.util.StringUtils;
 
 public class Minclouds {
 
