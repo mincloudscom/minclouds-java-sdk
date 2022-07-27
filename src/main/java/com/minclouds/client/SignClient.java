@@ -20,13 +20,22 @@ public class SignClient {
         this.api = api;
     }
 
+    /**
+     * @param shortenOrAppUuid 支持短码或者APP的Uuid
+     * @param udid             注册设备的UDID
+     * @throws ApiException
+     */
     public void register(String shortenOrAppUuid, String udid) throws ApiException {
         register(shortenOrAppUuid, udid, null, null, null, null);
     }
 
     /**
-     * @param shortenOrAppUuid: 支持短码或者APP的Uuid
-     * @param udid              注册设备的UDID
+     * @param shortenOrAppUuid 支持短码或者APP的Uuid
+     * @param udid             注册设备的UDID
+     * @param authCode         授权码
+     * @param separate         分身ID
+     * @param channelName      渠道名
+     * @param channelValue     渠道值
      * @throws ApiException
      */
     public void register(String shortenOrAppUuid, String udid, String authCode, String separate, String channelName, String channelValue) throws ApiException {
@@ -55,10 +64,10 @@ public class SignClient {
         if (StringUtils.isNotBlank(separate)) {
             param.put("separate", separate);
         }
-        if (StringUtils.isNotBlank(authCode)) {
+        if (StringUtils.isNotBlank(channelName)) {
             param.put("channel_name", channelName);
         }
-        if (StringUtils.isNotBlank(authCode)) {
+        if (StringUtils.isNotBlank(channelValue)) {
             param.put("channel_value", channelValue);
         }
         api.register(param);
