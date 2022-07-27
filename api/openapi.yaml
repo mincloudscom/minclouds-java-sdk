@@ -1,0 +1,2083 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: minclouds@163.com
+    name: 云小朵开发者服务平台
+    url: https://www.minclouds.com
+  description: 云小朵开发者服务平台应用程序接口文档
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  termsOfService: https://www.minclouds.com
+  title: 云小朵开发者服务平台
+  version: 1.0.0
+servers:
+- url: https://www.minclouds.com/
+tags:
+- description: 获取签名节点入口
+  name: Endpoint
+- description: 内测系统数据API接口
+  name: InternalTestSystem内测系统
+- description: iOS设备注册接口
+  name: IosDevice设备注册
+- description: IosEnterprise企业签名
+  name: IosEnterprise企业签名
+- description: 客户端授权登录认证获取Token接口
+  name: Oauth授权认证
+- description: SendCode发送验证码
+  name: SendCode发送验证码
+- description: Udid付费安装
+  name: Udid付费安装
+- description: UserProduct用户产品
+  name: UserProduct用户产品
+- description: iPhone设备注册
+  name: iPhone设备注册
+paths:
+  /aas/api/budCode:
+    post:
+      description: 增加授权码个数
+      operationId: budCode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CodeRequest'
+        description: codeRequest
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                format: int32
+                type: integer
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 增加授权码个数
+      tags:
+      - Udid付费安装
+      x-codegen-request-body-name: codeRequest
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /aas/api/buyMonth:
+    post:
+      description: IOS企业签名包年包月服务购买
+      operationId: buyMonth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BuyMonthRequest'
+        description: request
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BuyMonthResponse'
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 包年包月服务购买
+      tags:
+      - IosEnterprise企业签名
+      x-codegen-request-body-name: request
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /aas/api/buyUdid:
+    post:
+      description: UDID付费服务购买
+      operationId: buyUdid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UdidPayData'
+        description: payData
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                format: int64
+                type: integer
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: UDID付费服务购买
+      tags:
+      - Udid付费安装
+      x-codegen-request-body-name: payData
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /aas/api/checkMonth:
+    post:
+      description: 检查企业签名包年包月服务是否可用：当用户没有企业证书的时候，将不可用
+      operationId: checkMonth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BuyMonthRequest'
+        description: request
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BuyMonthResponse'
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 检查企业签名包年包月服务是否可用
+      tags:
+      - IosEnterprise企业签名
+      x-codegen-request-body-name: request
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /aas/api/checkUdid:
+    post:
+      description: UDID付费安装检查
+      operationId: checkUdid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UdidInstall'
+        description: udidInstall
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                format: int32
+                type: integer
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: UDID付费安装检查
+      tags:
+      - Udid付费安装
+      x-codegen-request-body-name: udidInstall
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /aas/api/disableDevice:
+    post:
+      description: iPhone设备禁用，手动禁用设备调用
+      operationId: disableDevice
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        description: udid
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: boolean
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: iPhone设备禁用
+      tags:
+      - IosDevice设备注册
+      x-codegen-request-body-name: udid
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /aas/api/disableDeviceApp:
+    post:
+      description: iPhone APP 禁用，手动禁用APP
+      operationId: disableDeviceApp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppUserData'
+        description: data
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: boolean
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: iPhone APP 禁用
+      tags:
+      - IosDevice设备注册
+      x-codegen-request-body-name: data
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /aas/api/enableDevice:
+    post:
+      description: iPhone设备解禁，设备禁用后重新启用
+      operationId: enableDevice
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        description: udid
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: boolean
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: iPhone设备解禁
+      tags:
+      - IosDevice设备注册
+      x-codegen-request-body-name: udid
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /aas/api/enableDeviceApp:
+    post:
+      description: iPhone APP 解禁，APP禁用后重新启用
+      operationId: enableDeviceApp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppUserData'
+        description: data
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: boolean
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: iPhone APP 解禁
+      tags:
+      - IosDevice设备注册
+      x-codegen-request-body-name: data
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /aas/api/enableUdid:
+    post:
+      description: UDID设备解禁，如果UDID被禁用有需要重新启用，可以手动解除禁用
+      operationId: enableUdid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        description: udid
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: boolean
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: UDID设备解禁
+      tags:
+      - IosDevice设备注册
+      x-codegen-request-body-name: udid
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /aas/api/getDeviceRegistry:
+    post:
+      description: IOS设备注册后的描述文件，签名所需的P12证书，以及P12证书的密码, 如果该UDID未注册成功将返回null
+      operationId: getDeviceRegistry
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        description: udid
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DeviceRegistryResponse'
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 获取设备注册的相关信息
+      tags:
+      - IosDevice设备注册
+      x-codegen-request-body-name: udid
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /aas/api/getJumpMobileProvision:
+    post:
+      description: 安装跳转文件用来在网页上直接跳转到设备管理里面安装描述文件
+      operationId: getJumpMobileProvision
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: string
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 获取安装跳转文件的地址
+      tags:
+      - IosDevice设备注册
+      x-accepts: '*/*'
+  /aas/api/getPublicPrice:
+    post:
+      description: 用户在获取证书的时候，可以调用该接口获取当前注册个人UDID的共享证书的最低价格
+      operationId: getPublicPrice
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: number
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 获取当前共享证书的最低价格
+      tags:
+      - IosDevice设备注册
+      x-accepts: '*/*'
+  /aas/api/getQuota:
+    post:
+      description: 内测系统配额适用于使用平台提供的镜像自动或手动部署系统，该配额在充值过程中消耗，当配额不足是可以在云小朵官方后台充值
+      operationId: getQuota
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        description: systemUuid
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: number
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 获取内测系统的配额
+      tags:
+      - InternalTestSystem内测系统
+      x-codegen-request-body-name: systemUuid
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /aas/api/getSignTool:
+    post:
+      description: 签名工具是用来进行对IPA重新签名的工具程序
+      operationId: getSignTool
+      requestBody:
+        content:
+          application/json:
+            schema:
+              enum:
+              - linux
+              - mac
+              - win
+              type: string
+        description: osType
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: string
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 获取签名工具的地址
+      tags:
+      - IosDevice设备注册
+      x-codegen-request-body-name: osType
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /aas/api/getTestSystem:
+    post:
+      description: 获取内测系统的信息
+      operationId: getTestSystem
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        description: uuid
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TestSystem'
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 获取内测系统的信息
+      tags:
+      - InternalTestSystem内测系统
+      x-codegen-request-body-name: uuid
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /aas/api/getUdidProduct:
+    post:
+      description: UDID付费产品价格
+      operationId: getUdidProduct
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        description: userUuid
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UdidProduct'
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: UDID付费产品价格
+      tags:
+      - Udid付费安装
+      x-codegen-request-body-name: userUuid
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /aas/api/getUdidStatus:
+    post:
+      description: 获取系统保存的UDID的状态：如果系统保存了该UDID,在返回该UDID的状态，如果系统没有该UDID，返回：ENABLED状态
+      operationId: getUdidStatus
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        description: udid
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                enum:
+                - DISABLED
+                - ENABLED
+                - INELIGIBLE
+                - PROCESSING
+                type: string
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 获取UDID的状态
+      tags:
+      - IosDevice设备注册
+      x-codegen-request-body-name: udid
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /aas/api/getUserProduct:
+    post:
+      description: 获取平台上用户产品的定价
+      operationId: getUserProduct
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserProduct'
+        description: userProduct
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Product'
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 获取平台上用户产品的定价
+      tags:
+      - UserProduct用户产品
+      x-codegen-request-body-name: userProduct
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /aas/api/hasValidCert:
+    post:
+      description: 查询是否偶可用的企业证书
+      operationId: hasValidCert
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        description: userUuid
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: boolean
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 查询是否偶可用的企业证书
+      tags:
+      - IosEnterprise企业签名
+      x-codegen-request-body-name: userUuid
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /aas/api/isUdidEnabled:
+    post:
+      description: UDID合格性校验，在调用签名前先校验UDID的合法性，防止注册设备损失
+      operationId: isUdidEnabled
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        description: udid
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: boolean
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: UDID合格性校验
+      tags:
+      - IosDevice设备注册
+      x-codegen-request-body-name: udid
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /aas/api/isValidCert:
+    post:
+      description: 校验P12证书的接口，当重签用户进入签名流程，如果之前签名的安装包数据还存在，通过该接口可以校验P12证书是否有效，如果有效，则直接使用之前的包分发，否则进入重签获取证书流程
+      operationId: isValidCert
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        description: certUuid
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: boolean
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 校验P12证书的接口
+      tags:
+      - IosEnterprise企业签名
+      x-codegen-request-body-name: certUuid
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /aas/api/isValidKey:
+    post:
+      description: 校验P8证书有效性的接口，当重签用户进入签名流程，如果之前签名的安装包数据还存在，通过该接口可以校验P8证书是否有效，如果有效，则直接使用之前的包分发，否则进入重签获取证书流程
+      operationId: isValidKey
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConnectKeyInfo'
+        description: connectKeyInfo
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: boolean
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 校验P8证书的接口
+      tags:
+      - IosDevice设备注册
+      x-codegen-request-body-name: connectKeyInfo
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /aas/api/register:
+    post:
+      description: iOS设备注册请求
+      operationId: register_2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceRegistryRequest'
+        description: registryRequest
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                additionalProperties:
+                  properties: {}
+                  type: object
+                type: object
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: iOS设备注册请求
+      tags:
+      - IosDevice设备注册
+      x-codegen-request-body-name: registryRequest
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /aas/api/sendCode:
+    post:
+      description: SendCode发送验证码
+      operationId: sendCode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        description: name
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: string
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: SendCode发送验证码
+      tags:
+      - SendCode发送验证码
+      x-codegen-request-body-name: name
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /app/register:
+    get:
+      description: iPhone设备注册
+      operationId: register_1
+      parameters:
+      - description: param
+        in: query
+        name: param
+        schema:
+          type: string
+      responses:
+        "200":
+          content: {}
+          description: OK
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: iPhone设备注册
+      tags:
+      - iPhone设备注册
+      x-accepts: application/json
+    post:
+      description: iPhone设备注册
+      operationId: register
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties:
+                type: string
+              type: object
+        description: param
+        required: true
+      responses:
+        "200":
+          content: {}
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: iPhone设备注册
+      tags:
+      - iPhone设备注册
+      x-codegen-request-body-name: param
+      x-contentType: application/json
+      x-accepts: application/json
+  /endpoint/getEndpoint:
+    post:
+      description: 获取签名节点入口
+      operationId: getEndpoint
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties:
+                type: string
+              type: object
+        description: param
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Endpoint'
+                type: array
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 获取签名节点入口
+      tags:
+      - Endpoint
+      x-codegen-request-body-name: param
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /oauth2/token:
+    post:
+      description: 获取Token
+      operationId: getToken
+      parameters:
+      - description: client_id
+        in: query
+        name: client_id
+        required: true
+        schema:
+          type: string
+      - description: client_secret
+        in: query
+        name: client_secret
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: string
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      summary: 获取Token
+      tags:
+      - Oauth授权认证
+      x-accepts: '*/*'
+components:
+  schemas:
+    AppUserData:
+      example:
+        plist: plist
+        shorten: shorten
+        host: host
+        ipa: ipa
+        udid: udid
+        uuid: uuid
+      properties:
+        host:
+          type: string
+        ipa:
+          type: string
+        plist:
+          type: string
+        shorten:
+          type: string
+        udid:
+          type: string
+        uuid:
+          type: string
+      title: AppUserData
+      type: object
+    BuyMonthRequest:
+      example:
+        appUuid: appUuid
+        month: 0
+        productId: productId
+        level: Disabled
+        deployMode: internal
+        price: 6.027456183070403
+        systemUuid: systemUuid
+        userUuid: userUuid
+        subUserUuid: subUserUuid
+      properties:
+        appUuid:
+          type: string
+        deployMode:
+          enum:
+          - internal
+          - open
+          type: string
+        level:
+          enum:
+          - Disabled
+          - Inherited
+          - Internal
+          - Private
+          - Protected
+          - Public
+          type: string
+        month:
+          format: int32
+          type: integer
+        price:
+          type: number
+        productId:
+          type: string
+        subUserUuid:
+          type: string
+        systemUuid:
+          type: string
+        userUuid:
+          type: string
+      title: BuyMonthRequest
+      type: object
+    BuyMonthResponse:
+      example:
+        msg: msg
+        certUuid: certUuid
+        flowNum: flowNum
+        code: 0
+        productId: productId
+        tradeNum: tradeNum
+        validKey: true
+        appUuid: appUuid
+        systemUuid: systemUuid
+        userUuid: userUuid
+        deadline: 2000-01-23T04:56:07.000+00:00
+        subUserUuid: subUserUuid
+        specifics: true
+      properties:
+        appUuid:
+          type: string
+        certUuid:
+          type: string
+        code:
+          format: int32
+          type: integer
+        deadline:
+          format: date-time
+          type: string
+        flowNum:
+          type: string
+        msg:
+          type: string
+        productId:
+          type: string
+        specifics:
+          type: boolean
+        subUserUuid:
+          type: string
+        systemUuid:
+          type: string
+        tradeNum:
+          type: string
+        userUuid:
+          type: string
+        validKey:
+          type: boolean
+      title: BuyMonthResponse
+      type: object
+    CodeRequest:
+      example:
+        payType: all
+        count: 0
+        paid: true
+        systemUuid: systemUuid
+        userUuid: userUuid
+        subUuid: subUuid
+        type: Auth
+      properties:
+        count:
+          format: int32
+          type: integer
+        paid:
+          type: boolean
+        payType:
+          enum:
+          - all
+          - app
+          - link
+          - udid
+          type: string
+        subUuid:
+          type: string
+        systemUuid:
+          type: string
+        type:
+          enum:
+          - Auth
+          - Link
+          - Udid
+          type: string
+        userUuid:
+          type: string
+      title: CodeRequest
+      type: object
+    ConnectKeyInfo:
+      example:
+        certificateId: certificateId
+        bundleId: bundleId
+        udid: udid
+        uuid: uuid
+      properties:
+        bundleId:
+          type: string
+        certificateId:
+          type: string
+        udid:
+          type: string
+        uuid:
+          type: string
+      title: ConnectKeyInfo
+      type: object
+    DeviceRegistryRequest:
+      example:
+        product: product
+        accessLevel: Disabled
+        signature: signature
+        accountUuid: accountUuid
+        priceLimit: 6.027456183070403
+        deviceName: deviceName
+        version: version
+        appUuid: appUuid
+        autoSelect: true
+        accessKey: accessKey
+        serial: serial
+        extra: extra
+        systemUuid: systemUuid
+        callback: callback
+        imei: imei
+        signType: AppStore
+        interval: 0
+        udid: udid
+        timestamp: 1
+      properties:
+        accessKey:
+          description: 调用接口凭证标识:在系统AccessKey管理中创建
+          type: string
+        accessLevel:
+          description: 证书请求级别，默认为私有(Private), 目前仅支持：Private，Protected，Public
+          enum:
+          - Disabled
+          - Inherited
+          - Internal
+          - Private
+          - Protected
+          - Public
+          type: string
+        accountUuid:
+          description: 账号的UUID,系统将优先使用指定的账户进行设备注册和签名，如果该账号无效或已无可用的注册设备数，则使用其他账号。在系统后台可以获取到账号的UUID,
+            签名回调中也包含该UUID
+          type: string
+        appUuid:
+          description: 系统默认将为UDID关联到某一个APP UUID上，用已确认某个UDID在某个APP中是否已注册，通过API接口调用时，如果没有APPUUID，可以使用(System
+            Uuid)代替，或随机生成一个
+          type: string
+        autoSelect:
+          description: 开启智能选择后，系统将根据当前证书价格的情况自动选择个人证书还是企业证书，包月到期将自动切换到按次付费
+          type: boolean
+        callback:
+          description: 设备注册成功后，系统将申请的证书通过回调地址发送到业务系统上
+          type: string
+        deviceName:
+          description: 设置名称，如果为空，则使用UDID，作为设备名
+          type: string
+        extra:
+          description: 额外传递的数据，该数据，在回调时原路返回
+          type: string
+        imei:
+          description: 手机的IMEI
+          type: string
+        interval:
+          description: 指定证书上传后的时间
+          format: int32
+          type: integer
+        priceLimit:
+          description: 系统中大于该值的证书将不会被调用
+          type: number
+        product:
+          description: 手机产品类型
+          type: string
+        serial:
+          description: 手机的序列号
+          type: string
+        signType:
+          description: 允许用户选择使用的签名类型
+          enum:
+          - AppStore
+          - MdmEnterprise
+          - MonthEnterprise
+          - OriginalMode
+          - SuperEnterprise
+          - SuperPersonal
+          - TestFlight
+          type: string
+        signature:
+          description: 签名校验，后台会对没错的设备注册进行数据校验，校验不通过，将不能签名；签名值：accessKey + udid + systemUuid
+            + appUuid + accessLevel + priceLimit + timestamp + accessSecret; 签名算法：md5
+          type: string
+        systemUuid:
+          description: 在云小朵官方网站后台开发内测菜单中，进入内测系统:创建一个<手动配置实例>类型，即可获得一个(System Uuid)
+          type: string
+        timestamp:
+          description: 当前时间的时间戳，用于校验请求的合法性，如果时间偏离当前时间，将可能导致失败
+          format: int64
+          type: integer
+        udid:
+          description: iOS或iPad设备UDID
+          type: string
+        version:
+          description: 手机版本号
+          type: string
+      required:
+      - accessKey
+      - accessLevel
+      - appUuid
+      - priceLimit
+      - signature
+      - systemUuid
+      - timestamp
+      - udid
+      title: DeviceRegistryRequest
+      type: object
+    DeviceRegistryResponse:
+      example:
+        msg: msg
+        flowNum: flowNum
+        code: 0
+        productId: productId
+        separate: separate
+        orderId: orderId
+        certificateId: certificateId
+        groupId: groupId
+        profile: profile
+        tradeNum: tradeNum
+        bundleId: bundleId
+        certificate: certificate
+        accountUuid: accountUuid
+        appData: appData
+        valid: true
+        appUuid: appUuid
+        password: password
+        profileId: profileId
+        extra: extra
+        systemUuid: systemUuid
+        callback: callback
+        signType: AppStore
+        udid: udid
+        value: 6.027456183070403
+      properties:
+        accountUuid:
+          description: 返回注册后使用的账号的UUID
+          type: string
+        appData:
+          description: 签名时传的的APP签名数据，比如渠道信息，该数据，在回调时原路返回
+          type: string
+        appUuid:
+          description: 系统默认将为UDID关联到某一个APP UUID上，用已确认某个UDID在某个APP中是否已注册，通过API接口调用时，如果没有APPUUID，可以使用(System
+            Uuid)代替，或随机生成一个
+          type: string
+        bundleId:
+          description: 当前签名账号的BundleID，仅作为参考，无实际用途
+          type: string
+        callback:
+          description: 回到地址
+          type: string
+        certificate:
+          description: P12证书的Base64编码格式，客户系统需要自行解码并保持为P12文件，用签名工具打包签名APP
+          type: string
+        certificateId:
+          description: 当前签名账号的证书ID，仅作为参考，无实际用途
+          type: string
+        code:
+          description: 失败码，成功一般都返回0，非0，即表示失败，查看对应失败码的描述
+          format: int32
+          type: integer
+        extra:
+          description: 额外参数，传递后原路返回
+          type: string
+        flowNum:
+          description: 流水号:防止重复提交与计费
+          type: string
+        groupId:
+          description: BundleID关联的GroupID
+          type: string
+        msg:
+          description: 设备注册失败的提示信息
+          type: string
+        orderId:
+          description: 订单号，传递后原路返回
+          type: string
+        password:
+          description: P12证书的密码，APP签名时需要，必要的返回数据
+          type: string
+        productId:
+          description: 计费的产品ID, 一键部署的第三方系统将根据该ID进行计费，API接口调用也使用该ID计费
+          type: string
+        profile:
+          description: 描述文件的Base64编码格式，客户系统需要自行解码并保持为.mobileprovision文件，用签名工具打包签名APP，该文件即为APP重签名后的APP安装包中的embedded.mobileprovision文件
+          type: string
+        profileId:
+          description: 描述文件的ID，仅作为参考，无实际用途
+          type: string
+        separate:
+          description: 应用分身的记录ID
+          type: string
+        signType:
+          description: 返回实际调用的签名类型
+          enum:
+          - AppStore
+          - MdmEnterprise
+          - MonthEnterprise
+          - OriginalMode
+          - SuperEnterprise
+          - SuperPersonal
+          - TestFlight
+          type: string
+        systemUuid:
+          description: 在云小朵官方网站后台开发内测菜单中，进入内测系统:创建一个<手动配置实例>类型，即可获得一个(System Uuid)
+          type: string
+        tradeNum:
+          description: 交易单号:业务系统计费的订单
+          type: string
+        udid:
+          description: iOS或iPad设备UDID
+          type: string
+        valid:
+          type: boolean
+        value:
+          description: 注册UDID消费金额
+          type: number
+      required:
+      - accountUuid
+      - appUuid
+      - certificate
+      - password
+      - systemUuid
+      - udid
+      title: DeviceRegistryResponse
+      type: object
+    Endpoint:
+      example:
+        endpoint: endpoint
+        name: name
+        description: description
+      properties:
+        description:
+          type: string
+        endpoint:
+          type: string
+        name:
+          type: string
+      title: Endpoint
+      type: object
+    Product:
+      example:
+        ownerType: Platform
+        productId: productId
+        discount: 1.4658129805029452
+        productStatus: Audit
+        commissionType: FixedValue
+        commissionValue: 6.027456183070403
+        plus: 2.3021358869347655
+        unit: unit
+        payType: Postpay
+        floating: 5.962133916683182
+        price: 7.061401241503109
+        name: name
+        dynamic: true
+        detail: detail
+        append: 0.8008281904610115
+        guide: 5.637376656633329
+        realPrice: 9.301444243932576
+      properties:
+        append:
+          type: number
+        commissionType:
+          enum:
+          - FixedValue
+          - Percentage
+          type: string
+        commissionValue:
+          type: number
+        detail:
+          type: string
+        discount:
+          type: number
+        dynamic:
+          type: boolean
+        floating:
+          format: double
+          type: number
+        guide:
+          type: number
+        name:
+          type: string
+        ownerType:
+          enum:
+          - Platform
+          - ThirdParty
+          type: string
+        payType:
+          enum:
+          - Postpay
+          - Prepay
+          type: string
+        plus:
+          type: number
+        price:
+          type: number
+        productId:
+          type: string
+        productStatus:
+          enum:
+          - Audit
+          - Forbidden
+          - Offline
+          - Online
+          type: string
+        realPrice:
+          type: number
+        unit:
+          type: string
+      title: Product
+      type: object
+    TestSystem:
+      example:
+        authCount: 0
+        stack: stack
+        releaseTime: releaseTime
+        payerCount: 3
+        release: true
+        regionName: regionName
+        consume: 5.962133916683182
+        codeLimit: 6
+        uuid: uuid
+        deploy: cloud
+        monthYear: Disabled
+        enable: 5
+        quota: 2.027123023002322
+        signedCount: 7
+        host: host
+        alias: alias
+        pem: pem
+        zoneId: zoneId
+        commission: 1.4658129805029452
+        tag: tag
+        zoneName: zoneName
+        key: key
+        udidLimit: 1
+        useMode: BySelf
+        image: image
+        accessLevel: Disabled
+        crt: crt
+        payMode: PerYearMonth
+        publicIp: publicIp
+        version: version
+        signLimit: 4.145608029883936
+        createTime: createTime
+        port: port
+        regionId: regionId
+        expend: 2.3021358869347655
+        domain: domain
+        systemStatus: Available
+        flowSize: 7
+        userUuid: userUuid
+        callback: callback
+        defaultZone: defaultZone
+        linkLimit: 9
+        status: Created
+        username: username
+      properties:
+        accessLevel:
+          description: 内测系统可配置的证书调用权限
+          enum:
+          - Disabled
+          - Inherited
+          - Internal
+          - Private
+          - Protected
+          - Public
+          type: string
+        alias:
+          description: 系统别名
+          type: string
+        authCount:
+          description: 授权次数:允许你设定一个该系统可签名的次数上限，达到上限后，使用该系统将不再签名
+          format: int32
+          type: integer
+        callback:
+          description: 系统默认的回调地址
+          type: string
+        codeLimit:
+          description: 授权码上限:系统可以生成授权码个数的上限
+          format: int32
+          type: integer
+        commission:
+          description: 配额比例:系统配额的手续费比例，大于0，小于1，按照比例收取，0，不收配额比例，按包年包月计算，小于0，使用系统默认值
+          format: double
+          type: number
+        consume:
+          description: 系统消费:给用户充值即表示配额消费了，仅使用官方提供的镜像部署的系统有效，API接口调用，无意义
+          type: number
+        createTime:
+          description: 创建时间
+          type: string
+        crt:
+          description: 系统证书CRT
+          type: string
+        defaultZone:
+          description: 系统默认的使用区域
+          type: string
+        deploy:
+          description: 部署模式
+          enum:
+          - cloud
+          - manual
+          type: string
+        domain:
+          description: 域名
+          type: string
+        enable:
+          description: 内测系统是否可用
+          format: int32
+          type: integer
+        expend:
+          description: 系统消耗:给用户充值后，用户实际消耗了该费用，仅使用官方提供的镜像部署的系统有效，API接口调用，无意义
+          type: number
+        flowSize:
+          description: 系统流量
+          format: int64
+          type: integer
+        host:
+          description: 主机
+          type: string
+        image:
+          description: 主机
+          type: string
+        key:
+          description: 系统证书KEY
+          type: string
+        linkLimit:
+          description: 授权链接上限:系统可以生成授权链接个数的上限
+          format: int32
+          type: integer
+        monthYear:
+          description: 包年包月企业证书调用权限
+          enum:
+          - Disabled
+          - Inherited
+          - Internal
+          - Private
+          - Protected
+          - Public
+          type: string
+        payMode:
+          description: 支付模式
+          enum:
+          - PerYearMonth
+          - Preemptive
+          - Quantity
+          type: string
+        payerCount:
+          description: 付费个数上限:同一个授权码或UDID,下载同一个用户的其他APP的付费个数上限，超过该上限，不再计费，小于等于零，表示都计费，无上限，大于0为上限的个数
+          format: int32
+          type: integer
+        pem:
+          description: 系统证书PEM
+          type: string
+        port:
+          description: 端口
+          type: string
+        publicIp:
+          description: 公网IP
+          type: string
+        quota:
+          description: 系统配额仅使用官方提供的镜像部署的系统有效，API接口调用，无意义
+          type: number
+        regionId:
+          description: 区域ID
+          type: string
+        regionName:
+          description: 区域名称
+          type: string
+        release:
+          description: 是否释放
+          type: boolean
+        releaseTime:
+          description: 释放时间
+          type: string
+        signLimit:
+          description: 签名价格最低限制:签名系统不能修改为低于该价格的签名值
+          type: number
+        signedCount:
+          description: 已签次数:记录系统已签名的次数
+          format: int32
+          type: integer
+        stack:
+          description: 部署栈:仅供在使用一键部署时使用，用以做命名空间的区分
+          type: string
+        status:
+          description: 实例状态
+          enum:
+          - Created
+          - Excepted
+          - Failed
+          - Paused
+          - Pausing
+          - Preparing
+          - Released
+          - Releasing
+          - Retry
+          - Running
+          - Starting
+          - Stopped
+          - Stopping
+          - Upgraded
+          - Upgrading
+          type: string
+        systemStatus:
+          description: 系统状态
+          enum:
+          - Available
+          - Excepted
+          - Forbidden
+          - NeedUpgrade
+          - NoDeploy
+          - ReadyRelease
+          type: string
+        tag:
+          description: 标签
+          type: string
+        udidLimit:
+          description: UDID直装上限:系统可以生成UDID直装链接个数的上限
+          format: int32
+          type: integer
+        useMode:
+          description: 使用模式
+          enum:
+          - BySelf
+          - Free
+          - Shared
+          type: string
+        userUuid:
+          description: 每个注册用户都有自己的UUID
+          type: string
+        username:
+          description: 用户名
+          type: string
+        uuid:
+          description: 在云小朵官方网站后台开发内测菜单中，进入内测系统:创建一个<手动配置实例>类型，即可获得一个(uuid)
+          type: string
+        version:
+          description: 版本号
+          type: string
+        zoneId:
+          description: 可用区ID
+          type: string
+        zoneName:
+          description: 可用区名称
+          type: string
+      required:
+      - userUuid
+      - uuid
+      title: TestSystem
+      type: object
+    UdidInstall:
+      example:
+        appUuid: appUuid
+        userUuid: userUuid
+        udid: udid
+      properties:
+        appUuid:
+          type: string
+        udid:
+          type: string
+        userUuid:
+          type: string
+      title: UdidInstall
+      type: object
+    UdidPayData:
+      example:
+        appCount: 0
+        buyData: 6
+        lastPay: 5.962133916683182
+        payType: All
+        orderId: orderId
+        payTime: 2000-01-23T04:56:07.000+00:00
+        phone: phone
+        userUuid: userUuid
+        giveData: 1
+        subUuid: subUuid
+        udid: udid
+        limitType: All
+      properties:
+        appCount:
+          format: int32
+          type: integer
+        buyData:
+          format: int64
+          type: integer
+        giveData:
+          format: int64
+          type: integer
+        lastPay:
+          type: number
+        limitType:
+          enum:
+          - All
+          - Inherited
+          - MultipleApp
+          - MultipleOnly
+          - SingleApp
+          - SingleOnly
+          - UnlimitedApp
+          - UnlimitedOnly
+          type: string
+        orderId:
+          type: string
+        payTime:
+          format: date-time
+          type: string
+        payType:
+          enum:
+          - All
+          - ByMonth
+          - ByTimes
+          - ByYear
+          - Inherited
+          - MonthOnly
+          - TimesOnly
+          - YearOnly
+          type: string
+        phone:
+          type: string
+        subUuid:
+          type: string
+        udid:
+          type: string
+        userUuid:
+          type: string
+      title: UdidPayData
+      type: object
+    UdidProduct:
+      example:
+        times:
+          ownerType: Platform
+          productId: productId
+          discount: 1.4658129805029452
+          productStatus: Audit
+          commissionType: FixedValue
+          commissionValue: 6.027456183070403
+          plus: 2.3021358869347655
+          unit: unit
+          payType: Postpay
+          floating: 5.962133916683182
+          price: 7.061401241503109
+          name: name
+          dynamic: true
+          detail: detail
+          append: 0.8008281904610115
+          guide: 5.637376656633329
+          realPrice: 9.301444243932576
+        month:
+          ownerType: Platform
+          productId: productId
+          discount: 1.4658129805029452
+          productStatus: Audit
+          commissionType: FixedValue
+          commissionValue: 6.027456183070403
+          plus: 2.3021358869347655
+          unit: unit
+          payType: Postpay
+          floating: 5.962133916683182
+          price: 7.061401241503109
+          name: name
+          dynamic: true
+          detail: detail
+          append: 0.8008281904610115
+          guide: 5.637376656633329
+          realPrice: 9.301444243932576
+        year:
+          ownerType: Platform
+          productId: productId
+          discount: 1.4658129805029452
+          productStatus: Audit
+          commissionType: FixedValue
+          commissionValue: 6.027456183070403
+          plus: 2.3021358869347655
+          unit: unit
+          payType: Postpay
+          floating: 5.962133916683182
+          price: 7.061401241503109
+          name: name
+          dynamic: true
+          detail: detail
+          append: 0.8008281904610115
+          guide: 5.637376656633329
+          realPrice: 9.301444243932576
+        userUuid: userUuid
+        plusapp:
+          ownerType: Platform
+          productId: productId
+          discount: 1.4658129805029452
+          productStatus: Audit
+          commissionType: FixedValue
+          commissionValue: 6.027456183070403
+          plus: 2.3021358869347655
+          unit: unit
+          payType: Postpay
+          floating: 5.962133916683182
+          price: 7.061401241503109
+          name: name
+          dynamic: true
+          detail: detail
+          append: 0.8008281904610115
+          guide: 5.637376656633329
+          realPrice: 9.301444243932576
+        network:
+          ownerType: Platform
+          productId: productId
+          discount: 1.4658129805029452
+          productStatus: Audit
+          commissionType: FixedValue
+          commissionValue: 6.027456183070403
+          plus: 2.3021358869347655
+          unit: unit
+          payType: Postpay
+          floating: 5.962133916683182
+          price: 7.061401241503109
+          name: name
+          dynamic: true
+          detail: detail
+          append: 0.8008281904610115
+          guide: 5.637376656633329
+          realPrice: 9.301444243932576
+      properties:
+        month:
+          $ref: '#/components/schemas/Product'
+        network:
+          $ref: '#/components/schemas/Product'
+        plusapp:
+          $ref: '#/components/schemas/Product'
+        times:
+          $ref: '#/components/schemas/Product'
+        userUuid:
+          type: string
+        year:
+          $ref: '#/components/schemas/Product'
+      title: UdidProduct
+      type: object
+    UserProduct:
+      example:
+        productId: productId
+        userUuid: userUuid
+      properties:
+        productId:
+          type: string
+        userUuid:
+          type: string
+      title: UserProduct
+      type: object
+  securitySchemes:
+    Authorization:
+      flows:
+        clientCredentials:
+          scopes:
+            all: All scope is trusted!
+          tokenUrl: /oauth2/token
+      type: oauth2
+x-original-swagger-version: "2.0"
+
