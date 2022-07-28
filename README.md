@@ -2,7 +2,7 @@
 
 云小朵开发者服务平台
 - API version: 1.0.0
-  - Build date: 2022-07-28T14:53:45.749+08:00[Asia/Shanghai]
+  - Build date: 2022-07-28T21:40:30.628+08:00[Asia/Shanghai]
 
 云小朵开发者服务平台应用程序接口文档
 
@@ -118,8 +118,14 @@ Class | Method | HTTP request | Description
 *EndpointApi* | [**getEndpoint**](docs/EndpointApi.md#getEndpoint) | **POST** /endpoint/getEndpoint | 获取签名节点入口
 *IPhoneApi* | [**register**](docs/IPhoneApi.md#register) | **POST** /app/register | iPhone设备注册
 *IPhoneApi* | [**register1**](docs/IPhoneApi.md#register1) | **GET** /app/register | iPhone设备注册
+*InternalTestSystemApi* | [**delete**](docs/InternalTestSystemApi.md#delete) | **POST** /aas/api/delete | 删除系统
+*InternalTestSystemApi* | [**getLatestIosVersion**](docs/InternalTestSystemApi.md#getLatestIosVersion) | **POST** /aas/api/getLatestIosVersion | 获取内测系统最新发布版本号
 *InternalTestSystemApi* | [**getQuota**](docs/InternalTestSystemApi.md#getQuota) | **POST** /aas/api/getQuota | 获取内测系统的配额
 *InternalTestSystemApi* | [**getTestSystem**](docs/InternalTestSystemApi.md#getTestSystem) | **POST** /aas/api/getTestSystem | 获取内测系统的信息
+*InternalTestSystemApi* | [**pause**](docs/InternalTestSystemApi.md#pause) | **POST** /aas/api/pause | 暂停系统
+*InternalTestSystemApi* | [**restart**](docs/InternalTestSystemApi.md#restart) | **POST** /aas/api/restart | 重启系统
+*InternalTestSystemApi* | [**start**](docs/InternalTestSystemApi.md#start) | **POST** /aas/api/start | 启动系统
+*InternalTestSystemApi* | [**upgrade**](docs/InternalTestSystemApi.md#upgrade) | **POST** /aas/api/upgrade | 升级系统
 *IosDeviceApi* | [**disableDevice**](docs/IosDeviceApi.md#disableDevice) | **POST** /aas/api/disableDevice | iPhone设备禁用
 *IosDeviceApi* | [**disableDeviceApp**](docs/IosDeviceApi.md#disableDeviceApp) | **POST** /aas/api/disableDeviceApp | iPhone APP 禁用
 *IosDeviceApi* | [**enableDevice**](docs/IosDeviceApi.md#enableDevice) | **POST** /aas/api/enableDevice | iPhone设备解禁
@@ -140,9 +146,7 @@ Class | Method | HTTP request | Description
 *OauthApi* | [**getToken**](docs/OauthApi.md#getToken) | **POST** /oauth2/token | 获取Token
 *OauthApi* | [**userInfo**](docs/OauthApi.md#userInfo) | **GET** /oauth2/userInfo | 获取用户信息
 *OauthApi* | [**userInfo1**](docs/OauthApi.md#userInfo1) | **POST** /oauth2/userInfo | 获取用户信息
-*SendCodeApi* | [**sendCode**](docs/SendCodeApi.md#sendCode) | **POST** /aas/api/sendCode | SendCode发送验证码
 *UdidApi* | [**budCode**](docs/UdidApi.md#budCode) | **POST** /aas/api/budCode | 增加授权码个数
-*UdidApi* | [**buyUdid**](docs/UdidApi.md#buyUdid) | **POST** /aas/api/buyUdid | UDID付费服务购买
 *UdidApi* | [**checkUdid**](docs/UdidApi.md#checkUdid) | **POST** /aas/api/checkUdid | UDID付费安装检查
 *UdidApi* | [**getUdidProduct**](docs/UdidApi.md#getUdidProduct) | **POST** /aas/api/getUdidProduct | UDID付费产品价格
 *UserProductApi* | [**getUserProduct**](docs/UserProductApi.md#getUserProduct) | **POST** /aas/api/getUserProduct | 获取平台上用户产品的定价
@@ -162,7 +166,6 @@ Class | Method | HTTP request | Description
  - [Product](docs/Product.md)
  - [TestSystem](docs/TestSystem.md)
  - [UdidInstall](docs/UdidInstall.md)
- - [UdidPayData](docs/UdidPayData.md)
  - [UdidProduct](docs/UdidProduct.md)
  - [UserProduct](docs/UserProduct.md)
 

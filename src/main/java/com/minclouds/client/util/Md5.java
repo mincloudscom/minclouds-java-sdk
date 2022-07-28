@@ -1,4 +1,4 @@
-package com.minclouds.util;
+package com.minclouds.client.util;
 
 import java.io.File;
 import java.io.FileInputStream;

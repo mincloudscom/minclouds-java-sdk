@@ -1,4 +1,4 @@
-package com.minclouds.model;
+package com.minclouds.client.entity;
 
 public enum CodeType {
     app,

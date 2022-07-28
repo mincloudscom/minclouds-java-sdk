@@ -114,46 +114,6 @@ paths:
       x-codegen-request-body-name: request
       x-contentType: application/json
       x-accepts: '*/*'
-  /aas/api/buyUdid:
-    post:
-      description: UDID付费服务购买
-      operationId: buyUdid
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UdidPayData'
-        description: payData
-        required: true
-      responses:
-        "200":
-          content:
-            '*/*':
-              schema:
-                format: int64
-                type: integer
-          description: OK
-        "201":
-          content: {}
-          description: Created
-        "401":
-          content: {}
-          description: Unauthorized
-        "403":
-          content: {}
-          description: Forbidden
-        "404":
-          content: {}
-          description: Not Found
-      security:
-      - Authorization:
-        - global
-      summary: UDID付费服务购买
-      tags:
-      - Udid付费安装
-      x-codegen-request-body-name: payData
-      x-contentType: application/json
-      x-accepts: '*/*'
   /aas/api/checkMonth:
     post:
       description: 检查企业签名包年包月服务是否可用：当用户没有企业证书的时候，将不可用
@@ -231,6 +191,45 @@ paths:
       tags:
       - Udid付费安装
       x-codegen-request-body-name: udidInstall
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /aas/api/delete:
+    post:
+      description: 删除系统
+      operationId: delete
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        description: uuid
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: boolean
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 删除系统
+      tags:
+      - InternalTestSystem内测系统
+      x-codegen-request-body-name: uuid
       x-contentType: application/json
       x-accepts: '*/*'
   /aas/api/disableDevice:
@@ -496,6 +495,36 @@ paths:
       summary: 获取安装跳转文件的地址
       tags:
       - IosDevice设备注册
+      x-accepts: '*/*'
+  /aas/api/getLatestIosVersion:
+    post:
+      description: 获取内测系统最新发布版本号
+      operationId: getLatestIosVersion
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: string
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 获取内测系统最新发布版本号
+      tags:
+      - InternalTestSystem内测系统
       x-accepts: '*/*'
   /aas/api/getPublicPrice:
     post:
@@ -926,6 +955,45 @@ paths:
       x-codegen-request-body-name: connectKeyInfo
       x-contentType: application/json
       x-accepts: '*/*'
+  /aas/api/pause:
+    post:
+      description: 暂停系统
+      operationId: pause
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        description: uuid
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: boolean
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 暂停系统
+      tags:
+      - InternalTestSystem内测系统
+      x-codegen-request-body-name: uuid
+      x-contentType: application/json
+      x-accepts: '*/*'
   /aas/api/register:
     post:
       description: iOS设备注册请求
@@ -968,23 +1036,23 @@ paths:
       x-codegen-request-body-name: registryRequest
       x-contentType: application/json
       x-accepts: '*/*'
-  /aas/api/sendCode:
+  /aas/api/restart:
     post:
-      description: SendCode发送验证码
-      operationId: sendCode
+      description: 重启系统
+      operationId: restart
       requestBody:
         content:
           application/json:
             schema:
               type: string
-        description: name
+        description: uuid
         required: true
       responses:
         "200":
           content:
             '*/*':
               schema:
-                type: string
+                type: boolean
           description: OK
         "201":
           content: {}
@@ -1001,10 +1069,88 @@ paths:
       security:
       - Authorization:
         - global
-      summary: SendCode发送验证码
+      summary: 重启系统
       tags:
-      - SendCode发送验证码
-      x-codegen-request-body-name: name
+      - InternalTestSystem内测系统
+      x-codegen-request-body-name: uuid
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /aas/api/start:
+    post:
+      description: 启动系统
+      operationId: start
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        description: uuid
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: boolean
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 启动系统
+      tags:
+      - InternalTestSystem内测系统
+      x-codegen-request-body-name: uuid
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /aas/api/upgrade:
+    post:
+      description: 升级系统
+      operationId: upgrade
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        description: uuid
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: boolean
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 升级系统
+      tags:
+      - InternalTestSystem内测系统
+      x-codegen-request-body-name: uuid
       x-contentType: application/json
       x-accepts: '*/*'
   /app/createAuthCode:
@@ -2004,69 +2150,6 @@ components:
         userUuid:
           type: string
       title: UdidInstall
-      type: object
-    UdidPayData:
-      example:
-        appCount: 0
-        buyData: 6
-        lastPay: 5.962133916683182
-        payType: All
-        orderId: orderId
-        payTime: 2000-01-23T04:56:07.000+00:00
-        phone: phone
-        userUuid: userUuid
-        giveData: 1
-        subUuid: subUuid
-        udid: udid
-        limitType: All
-      properties:
-        appCount:
-          format: int32
-          type: integer
-        buyData:
-          format: int64
-          type: integer
-        giveData:
-          format: int64
-          type: integer
-        lastPay:
-          type: number
-        limitType:
-          enum:
-          - All
-          - Inherited
-          - MultipleApp
-          - MultipleOnly
-          - SingleApp
-          - SingleOnly
-          - UnlimitedApp
-          - UnlimitedOnly
-          type: string
-        orderId:
-          type: string
-        payTime:
-          format: date-time
-          type: string
-        payType:
-          enum:
-          - All
-          - ByMonth
-          - ByTimes
-          - ByYear
-          - Inherited
-          - MonthOnly
-          - TimesOnly
-          - YearOnly
-          type: string
-        phone:
-          type: string
-        subUuid:
-          type: string
-        udid:
-          type: string
-        userUuid:
-          type: string
-      title: UdidPayData
       type: object
     UdidProduct:
       example:

@@ -4,7 +4,7 @@ import com.minclouds.ApiClient;
 import com.minclouds.ApiException;
 import com.minclouds.Configuration;
 import com.minclouds.api.OauthApi;
-import com.minclouds.util.StringUtils;
+import com.minclouds.client.util.StringUtils;
 
 public class Minclouds {
 

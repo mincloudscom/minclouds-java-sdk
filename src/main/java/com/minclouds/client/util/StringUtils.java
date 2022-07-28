@@ -1,4 +1,4 @@
-package com.minclouds.util;
+package com.minclouds.client.util;
 
 public class StringUtils {
 

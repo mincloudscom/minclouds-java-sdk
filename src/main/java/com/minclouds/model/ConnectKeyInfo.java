@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * ConnectKeyInfo
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-28T14:53:45.749+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-28T21:40:30.628+08:00[Asia/Shanghai]")
 public class ConnectKeyInfo {
   public static final String SERIALIZED_NAME_BUNDLE_ID = "bundleId";
   @SerializedName(SERIALIZED_NAME_BUNDLE_ID)

@@ -28,7 +28,7 @@ import java.math.BigDecimal;
 /**
  * TestSystem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-28T14:53:45.749+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-28T21:40:30.628+08:00[Asia/Shanghai]")
 public class TestSystem {
   /**
    * 内测系统可配置的证书调用权限

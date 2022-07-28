@@ -34,6 +34,37 @@ public class InternalTestSystemApiTest {
 
     
     /**
+     * 删除系统
+     *
+     * 删除系统
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteTest() throws ApiException {
+        String uuid = null;
+        Boolean response = api.delete(uuid);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 获取内测系统最新发布版本号
+     *
+     * 获取内测系统最新发布版本号
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getLatestIosVersionTest() throws ApiException {
+        String response = api.getLatestIosVersion();
+
+        // TODO: test validations
+    }
+    
+    /**
      * 获取内测系统的配额
      *
      * 内测系统配额适用于使用平台提供的镜像自动或手动部署系统，该配额在充值过程中消耗，当配额不足是可以在云小朵官方后台充值
@@ -61,6 +92,70 @@ public class InternalTestSystemApiTest {
     public void getTestSystemTest() throws ApiException {
         String uuid = null;
         TestSystem response = api.getTestSystem(uuid);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 暂停系统
+     *
+     * 暂停系统
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void pauseTest() throws ApiException {
+        String uuid = null;
+        Boolean response = api.pause(uuid);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 重启系统
+     *
+     * 重启系统
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void restartTest() throws ApiException {
+        String uuid = null;
+        Boolean response = api.restart(uuid);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 启动系统
+     *
+     * 启动系统
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void startTest() throws ApiException {
+        String uuid = null;
+        Boolean response = api.start(uuid);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 升级系统
+     *
+     * 升级系统
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void upgradeTest() throws ApiException {
+        String uuid = null;
+        Boolean response = api.upgrade(uuid);
 
         // TODO: test validations
     }

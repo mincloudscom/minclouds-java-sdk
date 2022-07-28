@@ -2,9 +2,9 @@ package com.minclouds.client;
 
 import com.minclouds.ApiException;
 import com.minclouds.api.IPhoneApi;
-import com.minclouds.util.AES;
-import com.minclouds.util.Md5;
-import com.minclouds.util.StringUtils;
+import com.minclouds.client.util.AES;
+import com.minclouds.client.util.Md5;
+import com.minclouds.client.util.StringUtils;
 
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;

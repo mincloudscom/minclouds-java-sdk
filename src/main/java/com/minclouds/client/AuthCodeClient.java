@@ -2,7 +2,7 @@ package com.minclouds.client;
 
 import com.minclouds.ApiException;
 import com.minclouds.api.AuthCodeApi;
-import com.minclouds.model.CodeType;
+import com.minclouds.client.entity.CodeType;
 
 import java.util.Map;
 

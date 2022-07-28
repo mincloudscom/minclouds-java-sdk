@@ -14,6 +14,7 @@
 package com.minclouds.api;
 
 import com.minclouds.ApiException;
+import com.minclouds.model.HttpEntity;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -44,6 +45,36 @@ public class OauthApiTest {
         String clientId = null;
         String clientSecret = null;
         String response = api.getToken(clientId, clientSecret);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 获取用户信息
+     *
+     * 获取用户信息
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void userInfoTest() throws ApiException {
+        HttpEntity response = api.userInfo();
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 获取用户信息
+     *
+     * 获取用户信息
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void userInfo1Test() throws ApiException {
+        HttpEntity response = api.userInfo1();
 
         // TODO: test validations
     }

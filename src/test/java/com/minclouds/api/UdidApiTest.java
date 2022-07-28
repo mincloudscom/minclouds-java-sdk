@@ -16,7 +16,6 @@ package com.minclouds.api;
 import com.minclouds.ApiException;
 import com.minclouds.model.CodeRequest;
 import com.minclouds.model.UdidInstall;
-import com.minclouds.model.UdidPayData;
 import com.minclouds.model.UdidProduct;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -47,22 +46,6 @@ public class UdidApiTest {
     public void budCodeTest() throws ApiException {
         CodeRequest codeRequest = null;
         Integer response = api.budCode(codeRequest);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * UDID付费服务购买
-     *
-     * UDID付费服务购买
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void buyUdidTest() throws ApiException {
-        UdidPayData payData = null;
-        Long response = api.buyUdid(payData);
 
         // TODO: test validations
     }
