@@ -25,62 +25,35 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * UserProduct
+ * HttpEntity
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-28T14:53:45.749+08:00[Asia/Shanghai]")
-public class UserProduct {
-  public static final String SERIALIZED_NAME_PRODUCT_ID = "productId";
-  @SerializedName(SERIALIZED_NAME_PRODUCT_ID)
-  private String productId;
-
-  public static final String SERIALIZED_NAME_USER_UUID = "userUuid";
-  @SerializedName(SERIALIZED_NAME_USER_UUID)
-  private String userUuid;
+public class HttpEntity {
+  public static final String SERIALIZED_NAME_BODY = "body";
+  @SerializedName(SERIALIZED_NAME_BODY)
+  private Object body;
 
 
-  public UserProduct productId(String productId) {
+  public HttpEntity body(Object body) {
     
-    this.productId = productId;
+    this.body = body;
     return this;
   }
 
    /**
-   * Get productId
-   * @return productId
+   * Get body
+   * @return body
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public String getProductId() {
-    return productId;
+  public Object getBody() {
+    return body;
   }
 
 
-  public void setProductId(String productId) {
-    this.productId = productId;
-  }
-
-
-  public UserProduct userUuid(String userUuid) {
-    
-    this.userUuid = userUuid;
-    return this;
-  }
-
-   /**
-   * Get userUuid
-   * @return userUuid
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getUserUuid() {
-    return userUuid;
-  }
-
-
-  public void setUserUuid(String userUuid) {
-    this.userUuid = userUuid;
+  public void setBody(Object body) {
+    this.body = body;
   }
 
 
@@ -92,23 +65,21 @@ public class UserProduct {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UserProduct userProduct = (UserProduct) o;
-    return Objects.equals(this.productId, userProduct.productId) &&
-        Objects.equals(this.userUuid, userProduct.userUuid);
+    HttpEntity httpEntity = (HttpEntity) o;
+    return Objects.equals(this.body, httpEntity.body);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(productId, userUuid);
+    return Objects.hash(body);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UserProduct {\n");
-    sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
-    sb.append("    userUuid: ").append(toIndentedString(userUuid)).append("\n");
+    sb.append("class HttpEntity {\n");
+    sb.append("    body: ").append(toIndentedString(body)).append("\n");
     sb.append("}");
     return sb.toString();
   }

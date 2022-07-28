@@ -1,7 +1,9 @@
 package com.minclouds.client;
 
 import com.minclouds.ApiClient;
+import com.minclouds.ApiException;
 import com.minclouds.Configuration;
+import com.minclouds.api.OauthApi;
 import com.minclouds.util.StringUtils;
 
 public class Minclouds {
@@ -16,19 +18,21 @@ public class Minclouds {
 
     private static String version;
 
-    static ApiClient client = Configuration.getDefaultApiClient();
+    static ApiClient client = null;
 
-    public static void init(String accessKey, String accessSecret) {
+    public static void init(String accessKey, String accessSecret) throws ApiException {
         init(null, accessKey, accessSecret);
     }
 
-    public static void init(String basePath, String accessKey, String accessSecret) {
-        if (StringUtils.isNotBlank(basePath)) {
-            client.setBasePath(basePath);
-        }
+    public static void init(String basePath, String accessKey, String accessSecret) throws ApiException {
         Minclouds.accessKey = accessKey;
         Minclouds.accessSecret = accessSecret;
+        client = new ApiClient(basePath, accessKey, accessSecret, null);
         client.setUserAgent("minclouds-java-sdk-1.0");
+        Configuration.setDefaultApiClient(client);
+        OauthApi oauthApi = new OauthApi();
+        String token = oauthApi.getToken(accessKey, accessSecret);
+        client.setAccessToken(token);
     }
 
     public static String getAccessKey() {

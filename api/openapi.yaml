@@ -14,6 +14,8 @@ info:
 servers:
 - url: https://www.minclouds.com/
 tags:
+- description: AuthCode授权码
+  name: AuthCode授权码
 - description: 获取签名节点入口
   name: Endpoint
 - description: 内测系统数据API接口
@@ -1005,6 +1007,55 @@ paths:
       x-codegen-request-body-name: name
       x-contentType: application/json
       x-accepts: '*/*'
+  /app/createAuthCode:
+    post:
+      description: 创建APP授权码
+      operationId: createAuthCode
+      parameters:
+      - description: appUuid
+        in: query
+        name: appUuid
+        schema:
+          type: string
+      - description: codeType
+        in: query
+        name: codeType
+        schema:
+          enum:
+          - all
+          - app
+          - link
+          - udid
+          type: string
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                additionalProperties:
+                  properties: {}
+                  type: object
+                type: object
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 创建APP授权码
+      tags:
+      - AuthCode授权码
+      x-accepts: '*/*'
   /app/register:
     get:
       description: iPhone设备注册
@@ -1155,6 +1206,62 @@ paths:
       tags:
       - Oauth授权认证
       x-accepts: '*/*'
+  /oauth2/userInfo:
+    get:
+      description: 获取用户信息
+      operationId: userInfo
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/HttpEntity'
+          description: OK
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 获取用户信息
+      tags:
+      - Oauth授权认证
+      x-accepts: application/json;charset=UTF-8
+    post:
+      description: 获取用户信息
+      operationId: userInfo_1
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/HttpEntity'
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 获取用户信息
+      tags:
+      - Oauth授权认证
+      x-accepts: application/json;charset=UTF-8
 components:
   schemas:
     AppUserData:
@@ -1562,6 +1669,15 @@ components:
         name:
           type: string
       title: Endpoint
+      type: object
+    HttpEntity:
+      example:
+        body: '{}'
+      properties:
+        body:
+          properties: {}
+          type: object
+      title: HttpEntity
       type: object
     Product:
       example:

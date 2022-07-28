@@ -2,7 +2,7 @@
 
 云小朵开发者服务平台
 - API version: 1.0.0
-  - Build date: 2022-07-27T12:14:17.520431+08:00[Asia/Shanghai]
+  - Build date: 2022-07-28T14:53:45.749+08:00[Asia/Shanghai]
 
 云小朵开发者服务平台应用程序接口文档
 
@@ -79,7 +79,7 @@ import com.minclouds.ApiException;
 import com.minclouds.Configuration;
 import com.minclouds.auth.*;
 import com.minclouds.models.*;
-import com.minclouds.api.EndpointApi;
+import com.minclouds.api.AuthCodeApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -90,13 +90,14 @@ public class Example {
     OAuth Authorization = (OAuth) defaultClient.getAuthentication("Authorization");
     Authorization.setAccessToken("YOUR ACCESS TOKEN");
 
-    EndpointApi apiInstance = new EndpointApi(defaultClient);
-    Map<String, String> param = new HashMap(); // Map<String, String> | param
+    AuthCodeApi apiInstance = new AuthCodeApi(defaultClient);
+    String appUuid = "appUuid_example"; // String | appUuid
+    String codeType = "codeType_example"; // String | codeType
     try {
-      List<Endpoint> result = apiInstance.getEndpoint(param);
+      Map<String, Object> result = apiInstance.createAuthCode(appUuid, codeType);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling EndpointApi#getEndpoint");
+      System.err.println("Exception when calling AuthCodeApi#createAuthCode");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -113,6 +114,7 @@ All URIs are relative to *https://www.minclouds.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AuthCodeApi* | [**createAuthCode**](docs/AuthCodeApi.md#createAuthCode) | **POST** /app/createAuthCode | 创建APP授权码
 *EndpointApi* | [**getEndpoint**](docs/EndpointApi.md#getEndpoint) | **POST** /endpoint/getEndpoint | 获取签名节点入口
 *IPhoneApi* | [**register**](docs/IPhoneApi.md#register) | **POST** /app/register | iPhone设备注册
 *IPhoneApi* | [**register1**](docs/IPhoneApi.md#register1) | **GET** /app/register | iPhone设备注册
@@ -136,6 +138,8 @@ Class | Method | HTTP request | Description
 *IosEnterpriseApi* | [**hasValidCert**](docs/IosEnterpriseApi.md#hasValidCert) | **POST** /aas/api/hasValidCert | 查询是否偶可用的企业证书
 *IosEnterpriseApi* | [**isValidCert**](docs/IosEnterpriseApi.md#isValidCert) | **POST** /aas/api/isValidCert | 校验P12证书的接口
 *OauthApi* | [**getToken**](docs/OauthApi.md#getToken) | **POST** /oauth2/token | 获取Token
+*OauthApi* | [**userInfo**](docs/OauthApi.md#userInfo) | **GET** /oauth2/userInfo | 获取用户信息
+*OauthApi* | [**userInfo1**](docs/OauthApi.md#userInfo1) | **POST** /oauth2/userInfo | 获取用户信息
 *SendCodeApi* | [**sendCode**](docs/SendCodeApi.md#sendCode) | **POST** /aas/api/sendCode | SendCode发送验证码
 *UdidApi* | [**budCode**](docs/UdidApi.md#budCode) | **POST** /aas/api/budCode | 增加授权码个数
 *UdidApi* | [**buyUdid**](docs/UdidApi.md#buyUdid) | **POST** /aas/api/buyUdid | UDID付费服务购买
@@ -154,6 +158,7 @@ Class | Method | HTTP request | Description
  - [DeviceRegistryRequest](docs/DeviceRegistryRequest.md)
  - [DeviceRegistryResponse](docs/DeviceRegistryResponse.md)
  - [Endpoint](docs/Endpoint.md)
+ - [HttpEntity](docs/HttpEntity.md)
  - [Product](docs/Product.md)
  - [TestSystem](docs/TestSystem.md)
  - [UdidInstall](docs/UdidInstall.md)

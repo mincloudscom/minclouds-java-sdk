@@ -2,6 +2,8 @@ package com.minclouds.client;
 
 import com.minclouds.ApiException;
 import com.minclouds.api.IPhoneApi;
+import com.minclouds.api.UdidApi;
+import com.minclouds.model.UdidProduct;
 import org.junit.Test;
 
 public class SignClientTest {
@@ -19,7 +21,16 @@ public class SignClientTest {
     @Test
     public void registerTest() throws ApiException {
         SignClient client = new SignClient(api);
-        Minclouds.init("AkLUYYbNEU1W", "4290bd77728daac510ad1fb634cc54f3");
-        client.register("X4gNs01", "d00865d577d69049b616e106f70bb66c88ed68b4");
+        Minclouds.init("", "");
+        client.register("", "");
+    }
+
+    @Test
+    public void getUdidProductTest() throws ApiException {
+        Minclouds.init("", "");
+        UdidApi udidApi = new UdidApi();
+        String userUuid = "";
+        UdidProduct response = udidApi.getUdidProduct(userUuid);
+        System.out.println(response);
     }
 }
