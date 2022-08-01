@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](InternalTestSystemApi.md#delete) | **POST** /aas/api/delete | 删除系统
 [**getLatestIosVersion**](InternalTestSystemApi.md#getLatestIosVersion) | **POST** /aas/api/getLatestIosVersion | 获取内测系统最新发布版本号
+[**getPlugins**](InternalTestSystemApi.md#getPlugins) | **POST** /aas/api/getPlugins | 获取内测系统的插件列表
 [**getQuota**](InternalTestSystemApi.md#getQuota) | **POST** /aas/api/getQuota | 获取内测系统的配额
 [**getTestSystem**](InternalTestSystemApi.md#getTestSystem) | **POST** /aas/api/getTestSystem | 获取内测系统的信息
 [**pause**](InternalTestSystemApi.md#pause) | **POST** /aas/api/pause | 暂停系统
@@ -141,6 +142,77 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: */*
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**201** | Created |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+
+<a name="getPlugins"></a>
+# **getPlugins**
+> List&lt;PluginEntry&gt; getPlugins(uuid)
+
+获取内测系统的插件列表
+
+获取内测系统的插件列表
+
+### Example
+```java
+// Import classes:
+import com.minclouds.ApiClient;
+import com.minclouds.ApiException;
+import com.minclouds.Configuration;
+import com.minclouds.auth.*;
+import com.minclouds.models.*;
+import com.minclouds.api.InternalTestSystemApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.minclouds.com");
+    
+    // Configure OAuth2 access token for authorization: Authorization
+    OAuth Authorization = (OAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setAccessToken("YOUR ACCESS TOKEN");
+
+    InternalTestSystemApi apiInstance = new InternalTestSystemApi(defaultClient);
+    String uuid = "uuid_example"; // String | uuid
+    try {
+      List<PluginEntry> result = apiInstance.getPlugins(uuid);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InternalTestSystemApi#getPlugins");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uuid** | **String**| uuid |
+
+### Return type
+
+[**List&lt;PluginEntry&gt;**](PluginEntry.md)
+
+### Authorization
+
+[Authorization](../README.md#Authorization)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: */*
 
 ### HTTP response details

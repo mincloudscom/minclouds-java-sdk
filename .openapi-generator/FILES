@@ -4,6 +4,9 @@ README.md
 api/openapi.yaml
 build.gradle
 build.sbt
+docs/AppDetail.md
+docs/AppInfo.md
+docs/AppSeparate.md
 docs/AppUserData.md
 docs/AuthCodeApi.md
 docs/BuyMonthRequest.md
@@ -15,11 +18,12 @@ docs/DeviceRegistryResponse.md
 docs/Endpoint.md
 docs/EndpointApi.md
 docs/HttpEntity.md
-docs/IPhoneApi.md
 docs/InternalTestSystemApi.md
+docs/IosAppApi.md
 docs/IosDeviceApi.md
 docs/IosEnterpriseApi.md
 docs/OauthApi.md
+docs/PluginEntry.md
 docs/Product.md
 docs/TestSystem.md
 docs/UdidApi.md
@@ -51,8 +55,8 @@ src/main/java/com/minclouds/ServerVariable.java
 src/main/java/com/minclouds/StringUtil.java
 src/main/java/com/minclouds/api/AuthCodeApi.java
 src/main/java/com/minclouds/api/EndpointApi.java
-src/main/java/com/minclouds/api/IPhoneApi.java
 src/main/java/com/minclouds/api/InternalTestSystemApi.java
+src/main/java/com/minclouds/api/IosAppApi.java
 src/main/java/com/minclouds/api/IosDeviceApi.java
 src/main/java/com/minclouds/api/IosEnterpriseApi.java
 src/main/java/com/minclouds/api/OauthApi.java
@@ -66,6 +70,9 @@ src/main/java/com/minclouds/auth/OAuth.java
 src/main/java/com/minclouds/auth/OAuthFlow.java
 src/main/java/com/minclouds/auth/OAuthOkHttpClient.java
 src/main/java/com/minclouds/auth/RetryingOAuth.java
+src/main/java/com/minclouds/model/AppDetail.java
+src/main/java/com/minclouds/model/AppInfo.java
+src/main/java/com/minclouds/model/AppSeparate.java
 src/main/java/com/minclouds/model/AppUserData.java
 src/main/java/com/minclouds/model/BuyMonthRequest.java
 src/main/java/com/minclouds/model/BuyMonthResponse.java
@@ -75,6 +82,7 @@ src/main/java/com/minclouds/model/DeviceRegistryRequest.java
 src/main/java/com/minclouds/model/DeviceRegistryResponse.java
 src/main/java/com/minclouds/model/Endpoint.java
 src/main/java/com/minclouds/model/HttpEntity.java
+src/main/java/com/minclouds/model/PluginEntry.java
 src/main/java/com/minclouds/model/Product.java
 src/main/java/com/minclouds/model/TestSystem.java
 src/main/java/com/minclouds/model/UdidInstall.java
@@ -82,13 +90,16 @@ src/main/java/com/minclouds/model/UdidProduct.java
 src/main/java/com/minclouds/model/UserProduct.java
 src/test/java/com/minclouds/api/AuthCodeApiTest.java
 src/test/java/com/minclouds/api/EndpointApiTest.java
-src/test/java/com/minclouds/api/IPhoneApiTest.java
 src/test/java/com/minclouds/api/InternalTestSystemApiTest.java
+src/test/java/com/minclouds/api/IosAppApiTest.java
 src/test/java/com/minclouds/api/IosDeviceApiTest.java
 src/test/java/com/minclouds/api/IosEnterpriseApiTest.java
 src/test/java/com/minclouds/api/OauthApiTest.java
 src/test/java/com/minclouds/api/UdidApiTest.java
 src/test/java/com/minclouds/api/UserProductApiTest.java
+src/test/java/com/minclouds/model/AppDetailTest.java
+src/test/java/com/minclouds/model/AppInfoTest.java
+src/test/java/com/minclouds/model/AppSeparateTest.java
 src/test/java/com/minclouds/model/AppUserDataTest.java
 src/test/java/com/minclouds/model/BuyMonthRequestTest.java
 src/test/java/com/minclouds/model/BuyMonthResponseTest.java
@@ -98,6 +109,7 @@ src/test/java/com/minclouds/model/DeviceRegistryRequestTest.java
 src/test/java/com/minclouds/model/DeviceRegistryResponseTest.java
 src/test/java/com/minclouds/model/EndpointTest.java
 src/test/java/com/minclouds/model/HttpEntityTest.java
+src/test/java/com/minclouds/model/PluginEntryTest.java
 src/test/java/com/minclouds/model/ProductTest.java
 src/test/java/com/minclouds/model/TestSystemTest.java
 src/test/java/com/minclouds/model/UdidInstallTest.java

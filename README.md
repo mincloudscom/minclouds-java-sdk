@@ -2,7 +2,7 @@
 
 云小朵开发者服务平台
 - API version: 1.0.0
-  - Build date: 2022-07-28T21:40:30.628+08:00[Asia/Shanghai]
+  - Build date: 2022-08-01T22:42:19.023+08:00[Asia/Shanghai]
 
 云小朵开发者服务平台应用程序接口文档
 
@@ -116,16 +116,20 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AuthCodeApi* | [**createAuthCode**](docs/AuthCodeApi.md#createAuthCode) | **POST** /app/createAuthCode | 创建APP授权码
 *EndpointApi* | [**getEndpoint**](docs/EndpointApi.md#getEndpoint) | **POST** /endpoint/getEndpoint | 获取签名节点入口
-*IPhoneApi* | [**register**](docs/IPhoneApi.md#register) | **POST** /app/register | iPhone设备注册
-*IPhoneApi* | [**register1**](docs/IPhoneApi.md#register1) | **GET** /app/register | iPhone设备注册
 *InternalTestSystemApi* | [**delete**](docs/InternalTestSystemApi.md#delete) | **POST** /aas/api/delete | 删除系统
 *InternalTestSystemApi* | [**getLatestIosVersion**](docs/InternalTestSystemApi.md#getLatestIosVersion) | **POST** /aas/api/getLatestIosVersion | 获取内测系统最新发布版本号
+*InternalTestSystemApi* | [**getPlugins**](docs/InternalTestSystemApi.md#getPlugins) | **POST** /aas/api/getPlugins | 获取内测系统的插件列表
 *InternalTestSystemApi* | [**getQuota**](docs/InternalTestSystemApi.md#getQuota) | **POST** /aas/api/getQuota | 获取内测系统的配额
 *InternalTestSystemApi* | [**getTestSystem**](docs/InternalTestSystemApi.md#getTestSystem) | **POST** /aas/api/getTestSystem | 获取内测系统的信息
 *InternalTestSystemApi* | [**pause**](docs/InternalTestSystemApi.md#pause) | **POST** /aas/api/pause | 暂停系统
 *InternalTestSystemApi* | [**restart**](docs/InternalTestSystemApi.md#restart) | **POST** /aas/api/restart | 重启系统
 *InternalTestSystemApi* | [**start**](docs/InternalTestSystemApi.md#start) | **POST** /aas/api/start | 启动系统
 *InternalTestSystemApi* | [**upgrade**](docs/InternalTestSystemApi.md#upgrade) | **POST** /aas/api/upgrade | 升级系统
+*IosAppApi* | [**getAppDetail**](docs/IosAppApi.md#getAppDetail) | **POST** /ios/api/getAppDetail | 获取APP详细信息的接口
+*IosAppApi* | [**getAppDetails**](docs/IosAppApi.md#getAppDetails) | **POST** /ios/api/getAppDetails | 获取该用户所有APP的详细信息
+*IosAppApi* | [**getAppInfo**](docs/IosAppApi.md#getAppInfo) | **POST** /ios/api/getAppInfo | 获取APP基本信息的接口
+*IosAppApi* | [**getAppInfos**](docs/IosAppApi.md#getAppInfos) | **POST** /ios/api/getAppInfos | 获取该用户所有APP的基本信息
+*IosAppApi* | [**getSeparates**](docs/IosAppApi.md#getSeparates) | **POST** /ios/api/getSeparates | 获取APP应用分身信息的接口
 *IosDeviceApi* | [**disableDevice**](docs/IosDeviceApi.md#disableDevice) | **POST** /aas/api/disableDevice | iPhone设备禁用
 *IosDeviceApi* | [**disableDeviceApp**](docs/IosDeviceApi.md#disableDeviceApp) | **POST** /aas/api/disableDeviceApp | iPhone APP 禁用
 *IosDeviceApi* | [**enableDevice**](docs/IosDeviceApi.md#enableDevice) | **POST** /aas/api/enableDevice | iPhone设备解禁
@@ -138,6 +142,8 @@ Class | Method | HTTP request | Description
 *IosDeviceApi* | [**getUdidStatus**](docs/IosDeviceApi.md#getUdidStatus) | **POST** /aas/api/getUdidStatus | 获取UDID的状态
 *IosDeviceApi* | [**isUdidEnabled**](docs/IosDeviceApi.md#isUdidEnabled) | **POST** /aas/api/isUdidEnabled | UDID合格性校验
 *IosDeviceApi* | [**isValidKey**](docs/IosDeviceApi.md#isValidKey) | **POST** /aas/api/isValidKey | 校验P8证书的接口
+*IosDeviceApi* | [**register**](docs/IosDeviceApi.md#register) | **POST** /app/register | IosDevice设备注册API调用
+*IosDeviceApi* | [**register1**](docs/IosDeviceApi.md#register1) | **GET** /app/register | IosDevice设备注册API调用
 *IosDeviceApi* | [**register2**](docs/IosDeviceApi.md#register2) | **POST** /aas/api/register | iOS设备注册请求
 *IosEnterpriseApi* | [**buyMonth**](docs/IosEnterpriseApi.md#buyMonth) | **POST** /aas/api/buyMonth | 包年包月服务购买
 *IosEnterpriseApi* | [**checkMonth**](docs/IosEnterpriseApi.md#checkMonth) | **POST** /aas/api/checkMonth | 检查企业签名包年包月服务是否可用
@@ -154,6 +160,9 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [AppDetail](docs/AppDetail.md)
+ - [AppInfo](docs/AppInfo.md)
+ - [AppSeparate](docs/AppSeparate.md)
  - [AppUserData](docs/AppUserData.md)
  - [BuyMonthRequest](docs/BuyMonthRequest.md)
  - [BuyMonthResponse](docs/BuyMonthResponse.md)
@@ -163,6 +172,7 @@ Class | Method | HTTP request | Description
  - [DeviceRegistryResponse](docs/DeviceRegistryResponse.md)
  - [Endpoint](docs/Endpoint.md)
  - [HttpEntity](docs/HttpEntity.md)
+ - [PluginEntry](docs/PluginEntry.md)
  - [Product](docs/Product.md)
  - [TestSystem](docs/TestSystem.md)
  - [UdidInstall](docs/UdidInstall.md)

@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **payMode** | [**PayModeEnum**](#PayModeEnum) | 支付模式 |  [optional]
 **payerCount** | **Integer** | 付费个数上限:同一个授权码或UDID,下载同一个用户的其他APP的付费个数上限，超过该上限，不再计费，小于等于零，表示都计费，无上限，大于0为上限的个数 |  [optional]
 **pem** | **String** | 系统证书PEM |  [optional]
+**plugins** | [**List&lt;PluginEntry&gt;**](PluginEntry.md) |  |  [optional]
 **port** | **String** | 端口 |  [optional]
 **publicIp** | **String** | 公网IP |  [optional]
 **quota** | **BigDecimal** | 系统配额仅使用官方提供的镜像部署的系统有效，API接口调用，无意义 |  [optional]

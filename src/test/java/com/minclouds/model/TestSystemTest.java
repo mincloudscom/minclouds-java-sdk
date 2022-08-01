@@ -18,10 +18,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.minclouds.model.PluginEntry;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -223,6 +226,14 @@ public class TestSystemTest {
     @Test
     public void pemTest() {
         // TODO: test pem
+    }
+
+    /**
+     * Test the property 'plugins'
+     */
+    @Test
+    public void pluginsTest() {
+        // TODO: test plugins
     }
 
     /**

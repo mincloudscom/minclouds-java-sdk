@@ -20,15 +20,18 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.minclouds.model.PluginEntry;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * TestSystem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-28T21:40:30.628+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-08-01T22:42:19.023+08:00[Asia/Shanghai]")
 public class TestSystem {
   /**
    * 内测系统可配置的证书调用权限
@@ -327,6 +330,10 @@ public class TestSystem {
   public static final String SERIALIZED_NAME_PEM = "pem";
   @SerializedName(SERIALIZED_NAME_PEM)
   private String pem;
+
+  public static final String SERIALIZED_NAME_PLUGINS = "plugins";
+  @SerializedName(SERIALIZED_NAME_PLUGINS)
+  private List<PluginEntry> plugins = null;
 
   public static final String SERIALIZED_NAME_PORT = "port";
   @SerializedName(SERIALIZED_NAME_PORT)
@@ -1119,6 +1126,37 @@ public class TestSystem {
   }
 
 
+  public TestSystem plugins(List<PluginEntry> plugins) {
+    
+    this.plugins = plugins;
+    return this;
+  }
+
+  public TestSystem addPluginsItem(PluginEntry pluginsItem) {
+    if (this.plugins == null) {
+      this.plugins = new ArrayList<PluginEntry>();
+    }
+    this.plugins.add(pluginsItem);
+    return this;
+  }
+
+   /**
+   * Get plugins
+   * @return plugins
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<PluginEntry> getPlugins() {
+    return plugins;
+  }
+
+
+  public void setPlugins(List<PluginEntry> plugins) {
+    this.plugins = plugins;
+  }
+
+
   public TestSystem port(String port) {
     
     this.port = port;
@@ -1632,6 +1670,7 @@ public class TestSystem {
         Objects.equals(this.payMode, testSystem.payMode) &&
         Objects.equals(this.payerCount, testSystem.payerCount) &&
         Objects.equals(this.pem, testSystem.pem) &&
+        Objects.equals(this.plugins, testSystem.plugins) &&
         Objects.equals(this.port, testSystem.port) &&
         Objects.equals(this.publicIp, testSystem.publicIp) &&
         Objects.equals(this.quota, testSystem.quota) &&
@@ -1657,7 +1696,7 @@ public class TestSystem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accessLevel, alias, authCount, callback, codeLimit, commission, consume, createTime, crt, defaultZone, deploy, domain, enable, expend, flowSize, host, image, key, linkLimit, monthYear, payMode, payerCount, pem, port, publicIp, quota, regionId, regionName, release, releaseTime, signLimit, signedCount, stack, status, systemStatus, tag, udidLimit, useMode, userUuid, username, uuid, version, zoneId, zoneName);
+    return Objects.hash(accessLevel, alias, authCount, callback, codeLimit, commission, consume, createTime, crt, defaultZone, deploy, domain, enable, expend, flowSize, host, image, key, linkLimit, monthYear, payMode, payerCount, pem, plugins, port, publicIp, quota, regionId, regionName, release, releaseTime, signLimit, signedCount, stack, status, systemStatus, tag, udidLimit, useMode, userUuid, username, uuid, version, zoneId, zoneName);
   }
 
 
@@ -1688,6 +1727,7 @@ public class TestSystem {
     sb.append("    payMode: ").append(toIndentedString(payMode)).append("\n");
     sb.append("    payerCount: ").append(toIndentedString(payerCount)).append("\n");
     sb.append("    pem: ").append(toIndentedString(pem)).append("\n");
+    sb.append("    plugins: ").append(toIndentedString(plugins)).append("\n");
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    publicIp: ").append(toIndentedString(publicIp)).append("\n");
     sb.append("    quota: ").append(toIndentedString(quota)).append("\n");

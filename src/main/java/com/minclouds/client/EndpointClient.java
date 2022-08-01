@@ -24,10 +24,10 @@ public class EndpointClient {
 
     public List<Endpoint> getEndpoint() throws ApiException {
         Map<String, String> param = new HashMap<>();
-        String accessKey = Minclouds.getAccessKey();
-        String secret = Minclouds.getAccessSecret();
-        String version = Minclouds.getVersion();
-        String type = Minclouds.getType();
+        String accessKey = SDK.getAccessKey();
+        String secret = SDK.getAccessSecret();
+        String version = SDK.getVersion();
+        String type = SDK.getType();
         String timestamp = String.valueOf(System.currentTimeMillis());
         String source = accessKey + version + timestamp + secret;
         String data = "";

@@ -20,7 +20,7 @@ public class EndpointClientTest {
      */
     @Test
     public void getEndpointTest() throws ApiException {
-        Minclouds.init("", "");
+        SDK.init("", "");
         EndpointClient client = new EndpointClient(api);
         List<Endpoint> endpoints = client.getEndpoint();
         System.out.println(endpoints);

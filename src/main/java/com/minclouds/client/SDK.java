@@ -6,7 +6,7 @@ import com.minclouds.Configuration;
 import com.minclouds.api.OauthApi;
 import com.minclouds.client.util.StringUtils;
 
-public class Minclouds {
+public class SDK {
 
     public static final String type_md5 = "md5";
     public static final String type_aes = "aes";
@@ -25,8 +25,8 @@ public class Minclouds {
     }
 
     public static void init(String basePath, String accessKey, String accessSecret) throws ApiException {
-        Minclouds.accessKey = accessKey;
-        Minclouds.accessSecret = accessSecret;
+        SDK.accessKey = accessKey;
+        SDK.accessSecret = accessSecret;
         client = new ApiClient(basePath, accessKey, accessSecret, null);
         client.setUserAgent("minclouds-java-sdk-1.0");
         Configuration.setDefaultApiClient(client);
@@ -50,7 +50,7 @@ public class Minclouds {
     }
 
     public static void setType(String type) {
-        Minclouds.type = type;
+        SDK.type = type;
     }
 
     public static String getVersion() {
@@ -60,6 +60,6 @@ public class Minclouds {
     }
 
     public static void setVersion(String version) {
-        Minclouds.version = version;
+        SDK.version = version;
     }
 }

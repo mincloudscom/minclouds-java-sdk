@@ -1,7 +1,7 @@
 package com.minclouds.client;
 
 import com.minclouds.ApiException;
-import com.minclouds.api.IPhoneApi;
+import com.minclouds.api.IosDeviceApi;
 import com.minclouds.client.util.AES;
 import com.minclouds.client.util.Md5;
 import com.minclouds.client.util.StringUtils;
@@ -11,12 +11,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SignClient {
-    IPhoneApi api;
+    IosDeviceApi api;
 
     public SignClient() {
     }
 
-    public SignClient(IPhoneApi api) {
+    public SignClient(IosDeviceApi api) {
         this.api = api;
     }
 
@@ -40,11 +40,11 @@ public class SignClient {
      */
     public void register(String shortenOrAppUuid, String udid, String authCode, String separate, String channelName, String channelValue) throws ApiException {
         Map<String, String> param = new HashMap<>();
-        String accessKey = Minclouds.getAccessKey();
+        String accessKey = SDK.getAccessKey();
         String timestamp = String.valueOf(System.currentTimeMillis());
-        String version = Minclouds.getVersion();
-        String secret = Minclouds.getAccessSecret();
-        String type = Minclouds.getType();
+        String version = SDK.getVersion();
+        String secret = SDK.getAccessSecret();
+        String type = SDK.getType();
         String source = accessKey + shortenOrAppUuid + udid + version + timestamp + secret;
         String data = "";
         if (type.equals("md5"))

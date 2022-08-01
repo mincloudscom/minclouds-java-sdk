@@ -20,20 +20,18 @@ tags:
   name: Endpoint
 - description: 内测系统数据API接口
   name: InternalTestSystem内测系统
+- description: App接口数据
+  name: IosApp应用
 - description: iOS设备注册接口
   name: IosDevice设备注册
 - description: IosEnterprise企业签名
   name: IosEnterprise企业签名
 - description: 客户端授权登录认证获取Token接口
   name: Oauth授权认证
-- description: SendCode发送验证码
-  name: SendCode发送验证码
 - description: Udid付费安装
   name: Udid付费安装
 - description: UserProduct用户产品
   name: UserProduct用户产品
-- description: iPhone设备注册
-  name: iPhone设备注册
 paths:
   /aas/api/budCode:
     post:
@@ -525,6 +523,47 @@ paths:
       summary: 获取内测系统最新发布版本号
       tags:
       - InternalTestSystem内测系统
+      x-accepts: '*/*'
+  /aas/api/getPlugins:
+    post:
+      description: 获取内测系统的插件列表
+      operationId: getPlugins
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        description: uuid
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/PluginEntry'
+                type: array
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 获取内测系统的插件列表
+      tags:
+      - InternalTestSystem内测系统
+      x-codegen-request-body-name: uuid
+      x-contentType: application/json
       x-accepts: '*/*'
   /aas/api/getPublicPrice:
     post:
@@ -1204,7 +1243,7 @@ paths:
       x-accepts: '*/*'
   /app/register:
     get:
-      description: iPhone设备注册
+      description: IosDevice设备注册API调用
       operationId: register_1
       parameters:
       - description: param
@@ -1228,12 +1267,12 @@ paths:
       security:
       - Authorization:
         - global
-      summary: iPhone设备注册
+      summary: IosDevice设备注册API调用
       tags:
-      - iPhone设备注册
+      - IosDevice设备注册
       x-accepts: application/json
     post:
-      description: iPhone设备注册
+      description: IosDevice设备注册API调用
       operationId: register
       requestBody:
         content:
@@ -1263,9 +1302,9 @@ paths:
       security:
       - Authorization:
         - global
-      summary: iPhone设备注册
+      summary: IosDevice设备注册API调用
       tags:
-      - iPhone设备注册
+      - IosDevice设备注册
       x-codegen-request-body-name: param
       x-contentType: application/json
       x-accepts: application/json
@@ -1310,6 +1349,189 @@ paths:
       tags:
       - Endpoint
       x-codegen-request-body-name: param
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /ios/api/getAppDetail:
+    post:
+      description: 获取APP详细信息的接口
+      operationId: getAppDetail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        description: appUuid
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AppDetail'
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 获取APP详细信息的接口
+      tags:
+      - IosApp应用
+      x-codegen-request-body-name: appUuid
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /ios/api/getAppDetails:
+    post:
+      description: 获取该用户所有APP的详细信息
+      operationId: getAppDetails
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/AppDetail'
+                type: array
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 获取该用户所有APP的详细信息
+      tags:
+      - IosApp应用
+      x-accepts: '*/*'
+  /ios/api/getAppInfo:
+    post:
+      description: 获取APP基本信息的接口
+      operationId: getAppInfo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        description: appUuid
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AppInfo'
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 获取APP基本信息的接口
+      tags:
+      - IosApp应用
+      x-codegen-request-body-name: appUuid
+      x-contentType: application/json
+      x-accepts: '*/*'
+  /ios/api/getAppInfos:
+    post:
+      description: 获取该用户所有APP的基本信息
+      operationId: getAppInfos
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/AppInfo'
+                type: array
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 获取该用户所有APP的基本信息
+      tags:
+      - IosApp应用
+      x-accepts: '*/*'
+  /ios/api/getSeparates:
+    post:
+      description: 获取APP应用分身信息的接口
+      operationId: getSeparates
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        description: appUuid
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/AppSeparate'
+                type: array
+          description: OK
+        "201":
+          content: {}
+          description: Created
+        "401":
+          content: {}
+          description: Unauthorized
+        "403":
+          content: {}
+          description: Forbidden
+        "404":
+          content: {}
+          description: Not Found
+      security:
+      - Authorization:
+        - global
+      summary: 获取APP应用分身信息的接口
+      tags:
+      - IosApp应用
+      x-codegen-request-body-name: appUuid
       x-contentType: application/json
       x-accepts: '*/*'
   /oauth2/token:
@@ -1410,6 +1632,473 @@ paths:
       x-accepts: application/json;charset=UTF-8
 components:
   schemas:
+    AppDetail:
+      example:
+        appVersion: appVersion
+        appAddress: appAddress
+        signHost: signHost
+        uuid: uuid
+        userAge: userAge
+        appTypeStr: appTypeStr
+        newAppName: newAppName
+        notification: notification
+        password: password
+        payType: All
+        shorten: shorten
+        unzipCharset: unzipCharset
+        contact: contact
+        packUdid: 1
+        signType: AppStore
+        appScore: appScore
+        fileVersion: fileVersion
+        shortCode: shortCode
+        qrcodeUrl: qrcodeUrl
+        signTime: signTime
+        videoMedia: videoMedia
+        apkLinkAddress: apkLinkAddress
+        signedSize: 4
+        appStatus: 5
+        userCount: 5
+        fileSize: 4
+        installType: AppCode
+        userUuid: userUuid
+        signCertUuid: signCertUuid
+        appSuffix: appSuffix
+        appCodePlus: 1.4658129805029452
+        separateType: Dynamic
+        appStar: appStar
+        newBundleId: newBundleId
+        appDomain: appDomain
+        progressType: 7
+        showNote: 1
+        shortUrl: shortUrl
+        autoMobileConfig: 9
+        icon: icon
+        description: description
+        installTime: 7
+        priceLimit: 6.84685269835264
+        jumpUrl: jumpUrl
+        autoSelect: true
+        acceleratePreload: 6
+        lastVisitTime: lastVisitTime
+        appType: 2
+        enterpriseSigned: 2
+        installJump: installJump
+        appSigned: 5
+        autoRenew: true
+        bindDomain: bindDomain
+        deadline: deadline
+        lang: lang
+        lastSignTimer: 1
+        accessLevel: Disabled
+        appName: appName
+        bundleId: bundleId
+        authCodePlus: 7.061401241503109
+        banner: banner
+        updateTime: updateTime
+        appSignal: appSignal
+        signedMd5: signedMd5
+        limitType: All
+        appSize: appSize
+        dynamicMobileConfig: 3
+        mobileConfig: mobileConfig
+        signedIpa: signedIpa
+        createTime: createTime
+        linkedUuid: linkedUuid
+        appImgs: appImgs
+        callback: callback
+        developer: developer
+        videoBackground: videoBackground
+        accelerateEnable: 0
+        inject: true
+        packAppUuid: 1
+        md5: md5
+      properties:
+        accelerateEnable:
+          format: int32
+          type: integer
+        acceleratePreload:
+          description: 只有当加速开关开启后有效
+          format: int32
+          type: integer
+        accessLevel:
+          enum:
+          - Disabled
+          - Inherited
+          - Internal
+          - Private
+          - Protected
+          - Public
+          type: string
+        apkLinkAddress:
+          description: 第三方安卓包下载地址
+          type: string
+        appAddress:
+          type: string
+        appCodePlus:
+          type: number
+        appDomain:
+          type: string
+        appImgs:
+          type: string
+        appName:
+          type: string
+        appScore:
+          type: string
+        appSignal:
+          type: string
+        appSigned:
+          format: int32
+          type: integer
+        appSize:
+          type: string
+        appStar:
+          type: string
+        appStatus:
+          description: 100,表示已上线;10,用户手动下线;20,触发限额自动下线;30,余额不足自动下线;40,系统强制下线;90,其他情况下线;-100,应用删除进入回收站
+          format: int32
+          type: integer
+        appSuffix:
+          type: string
+        appType:
+          format: int32
+          type: integer
+        appTypeStr:
+          type: string
+        appVersion:
+          type: string
+        authCodePlus:
+          type: number
+        autoMobileConfig:
+          description: 0,不自动;1,自动
+          format: int32
+          type: integer
+        autoRenew:
+          description: 当signType=MonthEnterprise时有效，表示是否自动开启到期续费，用户余额不足将自动续费失败
+          type: boolean
+        autoSelect:
+          description: 开启智能选择后，系统将自动判断使用哪种签名类型，系统优先使用用户自己的企业证书，依次使用个人证书，自动判断公有企业证书或个人证书中较便宜的签名类型，并自动切换
+          type: boolean
+        banner:
+          type: string
+        bindDomain:
+          type: string
+        bundleId:
+          type: string
+        callback:
+          type: string
+        contact:
+          type: string
+        createTime:
+          type: string
+        deadline:
+          description: 当signType=MonthEnterprise时有效，包月到期的时间
+          type: string
+        description:
+          type: string
+        developer:
+          type: string
+        dynamicMobileConfig:
+          format: int32
+          type: integer
+        enterpriseSigned:
+          format: int32
+          type: integer
+        fileSize:
+          format: int64
+          type: integer
+        fileVersion:
+          type: string
+        icon:
+          type: string
+        inject:
+          type: boolean
+        installJump:
+          type: string
+        installTime:
+          format: int32
+          type: integer
+        installType:
+          enum:
+          - AppCode
+          - AuthCode
+          - Direct
+          - Password
+          - Slider
+          - UdidDirect
+          - UdidPay
+          - VerifyCode
+          type: string
+        jumpUrl:
+          type: string
+        lang:
+          type: string
+        lastSignTimer:
+          description: 单位秒
+          format: int64
+          type: integer
+        lastVisitTime:
+          type: string
+        limitType:
+          enum:
+          - All
+          - Inherited
+          - MultipleApp
+          - MultipleOnly
+          - SingleApp
+          - SingleOnly
+          - UnlimitedApp
+          - UnlimitedOnly
+          type: string
+        linkedUuid:
+          type: string
+        md5:
+          type: string
+        mobileConfig:
+          type: string
+        newAppName:
+          type: string
+        newBundleId:
+          type: string
+        notification:
+          type: string
+        packAppUuid:
+          format: int32
+          type: integer
+        packUdid:
+          format: int32
+          type: integer
+        password:
+          type: string
+        payType:
+          enum:
+          - All
+          - ByMonth
+          - ByTimes
+          - ByYear
+          - Inherited
+          - MonthOnly
+          - TimesOnly
+          - YearOnly
+          type: string
+        priceLimit:
+          type: number
+        progressType:
+          description: -1:关闭页面打包安装进度提示,0:默认开启
+          format: int32
+          type: integer
+        qrcodeUrl:
+          type: string
+        separateType:
+          enum:
+          - Dynamic
+          - Original
+          type: string
+        shortCode:
+          type: string
+        shortUrl:
+          type: string
+        shorten:
+          type: string
+        showNote:
+          format: int32
+          type: integer
+        signCertUuid:
+          description: 签名证书的UUID, 企业签包年包月时，签名APP的证书的UUID
+          type: string
+        signHost:
+          type: string
+        signTime:
+          description: 当signType=MonthEnterprise时有效，记录上一次包年包月企业签的包的重签时间
+          type: string
+        signType:
+          enum:
+          - AppStore
+          - MdmEnterprise
+          - MonthEnterprise
+          - OriginalMode
+          - SuperEnterprise
+          - SuperPersonal
+          - TestFlight
+          type: string
+        signedIpa:
+          description: 签名后的安装包的存放地址，可供用户下载使用
+          type: string
+        signedMd5:
+          description: 签名后的安装包的MD5值
+          type: string
+        signedSize:
+          format: int64
+          type: integer
+        unzipCharset:
+          type: string
+        updateTime:
+          type: string
+        userAge:
+          type: string
+        userCount:
+          format: int64
+          type: integer
+        userUuid:
+          type: string
+        uuid:
+          type: string
+        videoBackground:
+          type: string
+        videoMedia:
+          type: string
+      title: AppDetail
+      type: object
+    AppInfo:
+      example:
+        appVersion: appVersion
+        shortUrl: shortUrl
+        icon: icon
+        description: description
+        uuid: uuid
+        jumpUrl: jumpUrl
+        userAge: userAge
+        appTypeStr: appTypeStr
+        newAppName: newAppName
+        lastVisitTime: lastVisitTime
+        contact: contact
+        signType: AppStore
+        appScore: appScore
+        lang: lang
+        qrcodeUrl: qrcodeUrl
+        videoMedia: videoMedia
+        appName: appName
+        authCodePlus: 6.027456183070403
+        banner: banner
+        updateTime: updateTime
+        appSignal: appSignal
+        appSize: appSize
+        createTime: createTime
+        installType: AppCode
+        appImgs: appImgs
+        developer: developer
+        videoBackground: videoBackground
+        appCodePlus: 0.8008281904610115
+        separateType: Dynamic
+        appStar: appStar
+      properties:
+        appCodePlus:
+          type: number
+        appImgs:
+          type: string
+        appName:
+          type: string
+        appScore:
+          type: string
+        appSignal:
+          type: string
+        appSize:
+          type: string
+        appStar:
+          type: string
+        appTypeStr:
+          type: string
+        appVersion:
+          type: string
+        authCodePlus:
+          type: number
+        banner:
+          type: string
+        contact:
+          type: string
+        createTime:
+          type: string
+        description:
+          type: string
+        developer:
+          type: string
+        icon:
+          type: string
+        installType:
+          enum:
+          - AppCode
+          - AuthCode
+          - Direct
+          - Password
+          - Slider
+          - UdidDirect
+          - UdidPay
+          - VerifyCode
+          type: string
+        jumpUrl:
+          type: string
+        lang:
+          type: string
+        lastVisitTime:
+          type: string
+        newAppName:
+          type: string
+        qrcodeUrl:
+          type: string
+        separateType:
+          enum:
+          - Dynamic
+          - Original
+          type: string
+        shortUrl:
+          type: string
+        signType:
+          enum:
+          - AppStore
+          - MdmEnterprise
+          - MonthEnterprise
+          - OriginalMode
+          - SuperEnterprise
+          - SuperPersonal
+          - TestFlight
+          type: string
+        updateTime:
+          type: string
+        userAge:
+          type: string
+        uuid:
+          type: string
+        videoBackground:
+          type: string
+        videoMedia:
+          type: string
+      title: AppInfo
+      type: object
+    AppSeparate:
+      example:
+        appUuid: appUuid
+        hidden: true
+        createTime: createTime
+        appName: appName
+        bundleId: bundleId
+        userUuid: userUuid
+        alias: alias
+        disabled: true
+        uuid: uuid
+        selected: true
+      properties:
+        alias:
+          type: string
+        appName:
+          type: string
+        appUuid:
+          type: string
+        bundleId:
+          type: string
+        createTime:
+          type: string
+        disabled:
+          type: boolean
+        hidden:
+          type: boolean
+        selected:
+          type: boolean
+        userUuid:
+          type: string
+        uuid:
+          type: string
+      title: AppSeparate
+      type: object
     AppUserData:
       example:
         plist: plist
@@ -1825,6 +2514,82 @@ components:
           type: object
       title: HttpEntity
       type: object
+    PluginEntry:
+      example:
+        msg: msg
+        summary: summary
+        images:
+        - images
+        - images
+        code: 0
+        data: data
+        author: author
+        banner: banner
+        description: description
+        index: index
+        main: true
+        updateTime: 2000-01-23T04:56:07.000+00:00
+        uuid: uuid
+        version: version
+        url: url
+        file: file
+        plugin: '{}'
+        createTime: 2000-01-23T04:56:07.000+00:00
+        price: price
+        name: name
+        namespace: namespace
+        logo: logo
+      properties:
+        author:
+          type: string
+        banner:
+          type: string
+        code:
+          format: int32
+          type: integer
+        createTime:
+          format: date-time
+          type: string
+        data:
+          type: string
+        description:
+          type: string
+        file:
+          type: string
+        images:
+          items:
+            type: string
+          type: array
+        index:
+          type: string
+        logo:
+          type: string
+        main:
+          type: boolean
+        msg:
+          type: string
+        name:
+          type: string
+        namespace:
+          type: string
+        plugin:
+          properties: {}
+          type: object
+        price:
+          type: string
+        summary:
+          type: string
+        updateTime:
+          format: date-time
+          type: string
+        url:
+          type: string
+        uuid:
+          type: string
+        version:
+          type: string
+      title: PluginEntry
+      type: object
     Product:
       example:
         ownerType: Platform
@@ -1902,6 +2667,53 @@ components:
         stack: stack
         releaseTime: releaseTime
         payerCount: 3
+        plugins:
+        - msg: msg
+          summary: summary
+          images:
+          - images
+          - images
+          code: 0
+          data: data
+          author: author
+          banner: banner
+          description: description
+          index: index
+          main: true
+          updateTime: 2000-01-23T04:56:07.000+00:00
+          uuid: uuid
+          version: version
+          url: url
+          file: file
+          plugin: '{}'
+          createTime: 2000-01-23T04:56:07.000+00:00
+          price: price
+          name: name
+          namespace: namespace
+          logo: logo
+        - msg: msg
+          summary: summary
+          images:
+          - images
+          - images
+          code: 0
+          data: data
+          author: author
+          banner: banner
+          description: description
+          index: index
+          main: true
+          updateTime: 2000-01-23T04:56:07.000+00:00
+          uuid: uuid
+          version: version
+          url: url
+          file: file
+          plugin: '{}'
+          createTime: 2000-01-23T04:56:07.000+00:00
+          price: price
+          name: name
+          namespace: namespace
+          logo: logo
         release: true
         regionName: regionName
         consume: 5.962133916683182
@@ -2040,6 +2852,10 @@ components:
         pem:
           description: 系统证书PEM
           type: string
+        plugins:
+          items:
+            $ref: '#/components/schemas/PluginEntry'
+          type: array
         port:
           description: 端口
           type: string

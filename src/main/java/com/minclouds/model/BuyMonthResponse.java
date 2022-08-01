@@ -28,7 +28,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * BuyMonthResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-28T21:40:30.628+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-08-01T22:42:19.023+08:00[Asia/Shanghai]")
 public class BuyMonthResponse {
   public static final String SERIALIZED_NAME_APP_UUID = "appUuid";
   @SerializedName(SERIALIZED_NAME_APP_UUID)

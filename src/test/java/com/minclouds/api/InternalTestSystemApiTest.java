@@ -15,6 +15,7 @@ package com.minclouds.api;
 
 import com.minclouds.ApiException;
 import java.math.BigDecimal;
+import com.minclouds.model.PluginEntry;
 import com.minclouds.model.TestSystem;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -60,6 +61,22 @@ public class InternalTestSystemApiTest {
     @Test
     public void getLatestIosVersionTest() throws ApiException {
         String response = api.getLatestIosVersion();
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 获取内测系统的插件列表
+     *
+     * 获取内测系统的插件列表
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getPluginsTest() throws ApiException {
+        String uuid = null;
+        List<PluginEntry> response = api.getPlugins(uuid);
 
         // TODO: test validations
     }

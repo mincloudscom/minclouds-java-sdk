@@ -16,6 +16,8 @@ Method | HTTP request | Description
 [**getUdidStatus**](IosDeviceApi.md#getUdidStatus) | **POST** /aas/api/getUdidStatus | 获取UDID的状态
 [**isUdidEnabled**](IosDeviceApi.md#isUdidEnabled) | **POST** /aas/api/isUdidEnabled | UDID合格性校验
 [**isValidKey**](IosDeviceApi.md#isValidKey) | **POST** /aas/api/isValidKey | 校验P8证书的接口
+[**register**](IosDeviceApi.md#register) | **POST** /app/register | IosDevice设备注册API调用
+[**register1**](IosDeviceApi.md#register1) | **GET** /app/register | IosDevice设备注册API调用
 [**register2**](IosDeviceApi.md#register2) | **POST** /aas/api/register | iOS设备注册请求
 
 
@@ -859,6 +861,145 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 **201** | Created |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+
+<a name="register"></a>
+# **register**
+> register(param)
+
+IosDevice设备注册API调用
+
+IosDevice设备注册API调用
+
+### Example
+```java
+// Import classes:
+import com.minclouds.ApiClient;
+import com.minclouds.ApiException;
+import com.minclouds.Configuration;
+import com.minclouds.auth.*;
+import com.minclouds.models.*;
+import com.minclouds.api.IosDeviceApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.minclouds.com");
+    
+    // Configure OAuth2 access token for authorization: Authorization
+    OAuth Authorization = (OAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setAccessToken("YOUR ACCESS TOKEN");
+
+    IosDeviceApi apiInstance = new IosDeviceApi(defaultClient);
+    Map<String, String> param = new HashMap(); // Map<String, String> | param
+    try {
+      apiInstance.register(param);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IosDeviceApi#register");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **param** | [**Map&lt;String, String&gt;**](String.md)| param |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Authorization](../README.md#Authorization)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**201** | Created |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+
+<a name="register1"></a>
+# **register1**
+> register1(param)
+
+IosDevice设备注册API调用
+
+IosDevice设备注册API调用
+
+### Example
+```java
+// Import classes:
+import com.minclouds.ApiClient;
+import com.minclouds.ApiException;
+import com.minclouds.Configuration;
+import com.minclouds.auth.*;
+import com.minclouds.models.*;
+import com.minclouds.api.IosDeviceApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.minclouds.com");
+    
+    // Configure OAuth2 access token for authorization: Authorization
+    OAuth Authorization = (OAuth) defaultClient.getAuthentication("Authorization");
+    Authorization.setAccessToken("YOUR ACCESS TOKEN");
+
+    IosDeviceApi apiInstance = new IosDeviceApi(defaultClient);
+    String param = "param_example"; // String | param
+    try {
+      apiInstance.register1(param);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IosDeviceApi#register1");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **param** | **String**| param | [optional]
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Authorization](../README.md#Authorization)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |

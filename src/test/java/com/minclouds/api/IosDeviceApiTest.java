@@ -227,6 +227,38 @@ public class IosDeviceApiTest {
     }
     
     /**
+     * IosDevice设备注册API调用
+     *
+     * IosDevice设备注册API调用
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void registerTest() throws ApiException {
+        Map<String, String> param = null;
+        api.register(param);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * IosDevice设备注册API调用
+     *
+     * IosDevice设备注册API调用
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void register1Test() throws ApiException {
+        String param = null;
+        api.register1(param);
+
+        // TODO: test validations
+    }
+    
+    /**
      * iOS设备注册请求
      *
      * iOS设备注册请求
